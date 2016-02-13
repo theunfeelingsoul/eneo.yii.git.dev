@@ -61,8 +61,10 @@ AdminAsset::register($this);
 					<li>
 						<?= Html::a('Add New', ['category/create'], ['class' => '']) ?>
 					</li>
-					<li><a href="#">Analytics</a></li>
-					<li><a href="#">Export</a></li>
+					<div>Users</div>
+					<li>
+						<?= Html::a('Profile', ['eneobizinfo/index'], ['class' => '']) ?>
+					</li>
 				</ul>
 			</div>
 		</div>

@@ -3,17 +3,19 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Category;
-use app\models\CategorySearch;
+use app\models\Eneobizinfo;
+use app\models\EneobizinfoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+
 /**
- * CategoryController implements the CRUD actions for Category model.
+ * EneobizinfoController implements the CRUD actions for Eneobizinfo model.
  */
-class CategoryController extends Controller
-{
+class EneobizinfoController extends Controller
+{   
+    
     public function behaviors()
     {
         return [
@@ -27,12 +29,12 @@ class CategoryController extends Controller
     }
 
     /**
-     * Lists all Category models.
+     * Lists all Eneobizinfo models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CategorySearch();
+        $searchModel = new EneobizinfoSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         $this->layout = "adminlayout";
@@ -44,12 +46,12 @@ class CategoryController extends Controller
     }
 
     /**
-     * Displays a single Category model.
+     * Displays a single Eneobizinfo model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
-    {
+    {   
         $this->layout = "adminlayout";
 
         return $this->render('view', [
@@ -58,7 +60,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Creates a new Category model.
+     * Creates a new Eneobizinfo model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -66,12 +68,14 @@ class CategoryController extends Controller
     {   
         $this->layout = "adminlayout";
 
-        $model = new Category(['scenario' => 'create']);
+        $model = new Eneobizinfo(['scenario' => 'create']);
+
+        $model = new Eneobizinfo();
 
         if ($model->load(Yii::$app->request->post()) ) {
 
-            $x=$model->imageFile = UploadedFile::getInstance($model, 'img_path');
-            $model->img_path = $x;
+            $img_name=$model->imageFile = UploadedFile::getInstance($model, 'cat_list_img_path');
+            $model->cat_list_img_path = $img_name;
             
             if ($model->upload()) { 
                 // file is uploaded successfully
@@ -90,31 +94,36 @@ class CategoryController extends Controller
                 'model' => $model,
             ]);
         }
+
     }
 
     /**
-     * Updates an existing Category model.
+     * Updates an existing Eneobizinfo model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
      */
     public function actionUpdate($id)
     {   
-        // add the scenario
-        // i.e img_path is not required in update
-        $model = new Category;
-        $model->scenario = 'update';
+        $this->layout = "adminlayout";
+
+        /*commented out for now. Seems not to be needed */
+        //add the scenario
+        //i.e img_path is not required in update
+        //$model = new Eneobizinfo;
+        //$model->scenario = 'update';
+         
 
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
             // check of there is any image
-            $i=$model->imageFile = UploadedFile::getInstance($model, 'img_path');
-            if ($i) {
+            $image=$model->imageFile = UploadedFile::getInstance($model, 'cat_list_img_path');
+            if ($image) {
                 // upload
                 $model->upload();
                 // set the image path
-                $model->img_path = $i;
+                $model->cat_list_img_path = $image;
             }
 
             // save set to false...still dont knw why, but works like this.
@@ -129,10 +138,18 @@ class CategoryController extends Controller
                 'model' => $model,
             ]);
         }
+
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //     return $this->redirect(['view', 'id' => $model->id]);
+        // } else {
+        //     return $this->render('update', [
+        //         'model' => $model,
+        //     ]);
+        // }
     }
 
     /**
-     * Deletes an existing Category model.
+     * Deletes an existing Eneobizinfo model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -145,15 +162,15 @@ class CategoryController extends Controller
     }
 
     /**
-     * Finds the Category model based on its primary key value.
+     * Finds the Eneobizinfo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Category the loaded model
+     * @return Eneobizinfo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Category::findOne($id)) !== null) {
+        if (($model = Eneobizinfo::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

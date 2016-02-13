@@ -9,11 +9,24 @@ CHANGE LOG
 
 2/13/2016 Sat
 -------------
-todo
-----
-1. Fix update category section
+1. Fixed update category section
   - uploading and displaying image
 2. Fix categories on front end 
+
+
+2/14/2016 Sun
+-------------
+1. Fixed eneobizinfo CRUD
+2. Fixed eneo/listing
+3. fixed eneo/category list
+4. fixed clicking on eneo/category list and being taken to the eneo/listing
+5. Created a table for eneobizinfo
+6. Fixed the image upload for eneobizinfo
+
+todo
+----
+1. fix the header links for the eneo frontend
+
 
 
 

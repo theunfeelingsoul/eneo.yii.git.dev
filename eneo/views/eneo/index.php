@@ -25,25 +25,26 @@
 					</p>
 				</div>
 				<div class="cat-content">
+					<?php foreach ($categories as $key => $category):?>
 					<div class="cat-row cat-row-1 col-md-4">
 						<div class="cat-row-inner">
 							<div class="cat-row-image">
 								<div class="Cat-image">
 									<a href="">
-										<img src="images/1.jpg" width="400" height="240">
+										<img src="images/<?= $category['img_path']; ?>" width="400" height="240">
 									</a>
 								</div>
 							</div>
 							<div class="cat-row-name">
-								<a href="">REstaurant</a>
+								<a href=""><?= $category['title']; ?></a>
 							</div>
 							<div class="cat-row-description">
-								<p>Purus dolor maecenas, illum culpa aliquam alias blandit in illo.</p>
+								<p><?= $category['descrption']; ?></p>
 							</div>
 						</div>
 					</div>
-
-					<div class="cat-row cat-row-1 col-md-4">
+					<?php endforeach; ?>
+					<!-- <div class="cat-row cat-row-1 col-md-4">
 						<div class="cat-row-inner">
 							<div class="cat-row-image">
 								<div class="Cat-image">
@@ -131,7 +132,7 @@
 								<p>Purus dolor maecenas, illum culpa aliquam alias blandit in illo.</p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 
 

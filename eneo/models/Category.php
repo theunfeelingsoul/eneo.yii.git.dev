@@ -16,11 +16,14 @@ use yii\web\UploadedFile;
  */
 class Category extends \yii\db\ActiveRecord
 {
+    
+    // will be used to store the image data
+    public $imageFile;
+
+
     /**
      * @inheritdoc
      */
-
-    public $imageFile;
     public static function tableName()
     {
         return 'category';
@@ -28,8 +31,8 @@ class Category extends \yii\db\ActiveRecord
 
 
 
-    // const SCENARIO_UPDATE = 'update';
-
+    // this helps ignore img_path when updating
+    // i.e. making it not required
     public function scenarios()
     {
         $scenarios = parent::scenarios();
@@ -44,13 +47,17 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            // [['file_image'],'image'],
-            [['img_path'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg','on'=>'create'],
+            // on create , means img_path will be required when creating only
+            [['img_path'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg','on'=>'create'], 
             [['title', 'descrption'], 'required'],
             [['title', 'descrption'], 'string', 'max' => 255]
         ];
     }
 
+    /**
+     * Saves the uploaded image to the a folder
+     * If upload is succesful it returns true
+     */
     public function upload()
     {   
         // only validate two fields
@@ -58,20 +65,12 @@ class Category extends \yii\db\ActiveRecord
         if ($this->validate(array('title', 'descrption'))) {
             // upload the image
             $this->imageFile->saveAs('images/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-
-            // return the name
-            // return $This->imageFile->baseName . '.' . $this->imageFile->extension;
             return true;
         } else {
-            echo "failed validation";
-            exit();
             return false;
         }
     }
 
-//     if($model->validate(array('attribute_name')) 
-//      // valid
-// }
 
     /**
      * @inheritdoc

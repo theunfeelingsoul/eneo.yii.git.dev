@@ -7,20 +7,20 @@
 					<div class="business-banner-content">
 						<div class="col-md-8">
 							<div class="business-banner-title">
-								Modern Jeans
+								<?= $biz['name'] ?>
 							</div>
 							<div class="business-banner-detail">
 								<div class="business-banner-detail-address">
 									<span class="glyphicon glyphicon-home"></span>
-									Westlands, Mogotio rd,
+									<?= $biz['address'] ?>
 								</div>
 								<div class="business-banner-detail-phone">
 									<span class="glyphicon glyphicon-phone-alt"></span>
-									0722383897
+									<?= $biz['tel'] ?>
 								</div>
 								<div class="business-banner-detail-website">
 									<span class="glyphicon glyphicon-globe"></span>
-									<a href="">Symphony</a>
+									<a href=""><?= $biz['website'] ?></a>
 								</div>
 							</div>
 						</div>
@@ -62,48 +62,46 @@
 							<div class="field-label ">Description:&nbsp;</div>
 							<div class="field-items">
 								<p>
-									Cum sociis natoque penatibus et magnis dis parturient montes, 
-									nascetur ridiculus mus. Donec quam felis, ultricies nec, pellen
-									tesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+									<?= $biz['des'] ?>
 								</p>
 							</div>
 						</div>
 
-						<div class="field field-name-field-open-time">
+					<!-- 	<div class="field field-name-field-open-time">
 							<div class="field-label ">Open Time:&nbsp;</div>
 							<div class="field-items">
 								<p>
 									9 AM to 6:30 PM Mon to Sun
 								</p>
 							</div>
-						</div>
+						</div> -->
 
 
-						<div class="field field-name-field-price-range">
+						<!-- <div class="field field-name-field-price-range">
 							<div class="field-label ">Price range:&nbsp;</div>
 							<div class="field-items">
 								<p>
 									Middle End
 								</p>
 							</div>
-						</div>
+						</div> -->
 
 						<div class="field field-name-field-highlights">
 							<div class="field-label ">Highlights:&nbsp;</div>
 							<div class="field-items">
-								<p>Take ReservationsAccept credit cardsWheelchair accessible9 AM to 6:30 PM Mon to Sun
+								<p><?php echo $biz['des'] ?>
 								</p>
 							</div>
 						</div>
 
-						<div class="field field-name-field-tags">
+					<!-- 	<div class="field field-name-field-tags">
 							<div class="field-label ">TAGS:&nbsp;</div>
 							<div class="field-items">
 								<p>
 									9JeanYouthStylish
 								</p>
 							</div>
-						</div>
+						</div> -->
 
 						<div class="field field-name-field-photos">
 							<div class="field-label ">Photos</div>

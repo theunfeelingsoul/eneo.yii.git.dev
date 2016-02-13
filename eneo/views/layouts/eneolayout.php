@@ -51,12 +51,20 @@ EneoAsset::register($this);
 					      <!-- Collect the nav links, forms, and other content for toggling -->
 					      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 					        <ul class="nav navbar-nav">
-					          <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+					          <li class="active">
+						          <!-- <a href="#">Home <span class="sr-only">(current)</span></a> -->
+						          <?= Html::a('Home <span class="sr-only">(current)</span>', ['eneo/index'], ['class' => '']) ?>
+					          </li>
 					          <li class="dropdown">
 					            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse<span class="caret"></span></a>
 					            <ul class="dropdown-menu">
-					              <li><a href="category.php">List Category</a></li>
+					              <li>
+					              	<?= Html::a('List Category', ['eneo/categorylist'], ['class' => '']) ?>
+					              </li>
 					              <li role="separator" class="divider"></li>
+					              <li>
+						              <?= Html::a('Media', ['eneo/digital'], ['class' => '']) ?>
+					              </li>
 					            </ul>
 					          </li>
 					          <li><a href="#">Submit a listing</a></li>
@@ -123,15 +131,21 @@ EneoAsset::register($this);
 					      <!-- Collect the nav links, forms, and other content for toggling -->
 					      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					        <ul class="nav navbar-nav">
-					          <li class="active"><a href="index.php">Home <span class="sr-only">(current)</span></a></li>
+					          <li class="active">
+						          <!-- <a href="index.php">Home <span class="sr-only">(current)</span></a> -->
+						          <?= Html::a('Home <span class="sr-only">(current)</span>', ['eneo/index'], ['class' => '']) ?>
+					          </li>
+
 					          <li class="dropdown desktop">
 					            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse <span class="caret"></span></a>
 					            <ul class="dropdown-menu">
-					              <li><a href="category.php">List Category</a></li>
+					              <li>
+					              	<?= Html::a('List Category', ['eneo/categorylist'], ['class' => '']) ?>
+					              </li>
 					              <li role="separator" class="divider"></li>
-					              <li><a href="clisting.php">Category listing</a></li>
-					              <li role="separator" class="divider"></li>
-					              <li><a href="clistingvideo.php">listing media</a></li>
+					              <li>
+									<?= Html::a('Media', ['eneo/digital'], ['class' => '']) ?>
+					              </li>
 					            </ul>
 					          </li>
 					          <li><a href="#">Submit a listing</a></li>

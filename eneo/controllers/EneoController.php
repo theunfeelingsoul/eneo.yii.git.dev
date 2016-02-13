@@ -1,6 +1,8 @@
 <?php
 
 namespace app\controllers;
+use app\models\Category;
+use app\models\Eneobizinfo;
 
 use Yii;
 use yii\web\Controller;
@@ -27,24 +29,40 @@ class EneoController extends Controller
     public function actionIndex()
     {   
         $this->layout = "eneolayout";
-        return $this->render('index');
+
+        // get data from category model
+        $c = Category::find()->all();
+        
+        return $this->render('index',['categories' =>$c]);
     }
 
-    public function actionCategory()
+    public function actionCategorylist()
     {
         $this->layout = "eneolayout";
-        return $this->render('categorylist');
+
+        // get data from category model
+        $l = Eneobizinfo::find()->all();
+
+        return $this->render('categorylist',['catlists'=>$l]);
     }
     
-    public function actionListing()
+    public function actionListing($id)
     {
         $this->layout = "eneolayout";
-        return $this->render('listing');
+
+        // find by ID
+        $biz = Eneobizinfo::find()
+        ->where(['id' => $id])
+        ->one();
+        return $this->render('listing',['biz'=>$biz]);
     }
 
     public function actionDigital()
     {
         $this->layout = "eneolayout";
+
+        // FIND BY ID
+
         return $this->render('digital');
     }
 
