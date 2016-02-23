@@ -1,3 +1,4 @@
+<?php use yii\helpers\Html; ?>
 <div class="container-fluid">
 	<div class="row">
 		<!-- #business-banner -->
@@ -109,7 +110,8 @@
 								<div class="row video-list">
 									<div class="video-list-">
 										<div class="col-sm-3">
-											<a href="clistingplayvideo.php"><img src="images/video1.png"></a>
+											<!-- <a href="clistingplayvideo.php"><img src="images/video1.png"></a> -->
+											<?php echo Html::a('<video width="162" height="91"> <source src="images/uploads/11793.mp4" type="video/mp4"></video>',['eneo/video'], ['class' => '']) ?>
 										</div>
 										<div class="col-sm-9">
 											<h5 class=""><a href="clistingplayvideo.php">Video 1</a></h5>

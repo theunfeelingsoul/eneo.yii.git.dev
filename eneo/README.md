@@ -22,11 +22,21 @@ CHANGE LOG
 4. fixed clicking on eneo/category list and being taken to the eneo/listing
 5. Created a table for eneobizinfo
 6. Fixed the image upload for eneobizinfo
+7. fix the header links for the eneo frontend
+
+
+2/16/2016
+----------
+
+1. Add cat_id field to eneobizinfo page
+2. add a catehory select to the eneobizinfo create form
+3. add the lin to the corresponfing category frontend
 
 todo
-----
-1. fix the header links for the eneo frontend
+-----
 
+4. Create backend video upload 
+5. Create front end display 
 
 
 

@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\Eneobizinfo;
 use app\models\EneobizinfoSearch;
+use app\models\Category;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -69,31 +70,35 @@ class EneobizinfoController extends Controller
         $this->layout = "adminlayout";
 
         $model = new Eneobizinfo(['scenario' => 'create']);
+        // $model = new Eneobizinfo();
 
-        $model = new Eneobizinfo();
+        // get data from catergory model
+        // $c = Category::find()->all();
+        $c =array('ccc' => 'dcdc','ccc' => 'dcdc' );
 
+
+        // check post request // upload image // save record
         if ($model->load(Yii::$app->request->post()) ) {
 
-            $img_name=$model->imageFile = UploadedFile::getInstance($model, 'cat_list_img_path');
-            $model->cat_list_img_path = $img_name;
+
+            $img_name=$model->imageFile = UploadedFile::getInstance($model, 'cat_list_img_path'); // get image
+            $model->cat_list_img_path = $img_name; // add the name to the model
             
             if ($model->upload()) { 
                 // file is uploaded successfully
                 if ($model->save(false)) {
-                   return $this->redirect(['view', 'id' => $model->id]);
+                    return $this->redirect(['view', 'id' => $model->id]);
+                    exit();
                 }else{
                     return $model->getErrors();
                 }
             }else{
                 echo "did not upload";
             }
-
+        } // endif 
             
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+
+        return $this->render('create', ['model' => $model]);
 
     }
 

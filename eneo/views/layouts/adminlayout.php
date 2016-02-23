@@ -55,6 +55,7 @@ AdminAsset::register($this);
 		<div class="sidebar col-md-1">
 			<div class="row">
 				<ul class="nav-sidebar">
+					<div>Admin</div>
 					<li class="active">
 						<?= Html::a('Categories', ['category/index'], ['class' => '']) ?>
 					</li>
@@ -64,6 +65,9 @@ AdminAsset::register($this);
 					<div>Users</div>
 					<li>
 						<?= Html::a('Profile', ['eneobizinfo/index'], ['class' => '']) ?>
+					</li>
+					<li>
+						<?= Html::a('Videos', ['advideos/index'], ['class' => '']) ?>
 					</li>
 				</ul>
 			</div>

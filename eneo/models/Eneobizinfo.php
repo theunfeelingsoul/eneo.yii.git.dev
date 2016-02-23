@@ -16,6 +16,7 @@ use yii\web\UploadedFile;
  * @property string $highlights
  * @property string $address
  * @property string $cat_list_img_path
+ * @property string $cat_id
  */
 class Eneobizinfo extends \yii\db\ActiveRecord
 {
@@ -40,7 +41,7 @@ class Eneobizinfo extends \yii\db\ActiveRecord
     {
         return [
             [['cat_list_img_path'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg','on'=>'create'], 
-            [['tel', 'website', 'name', 'des', 'highlights', 'address'], 'required'],
+            [['tel', 'website', 'name', 'des', 'highlights', 'address','cat_id'], 'required'],
             [['des'], 'string'],
             [['tel', 'website', 'name', 'highlights', 'address'], 'string', 'max' => 255]
         ];
@@ -60,6 +61,7 @@ class Eneobizinfo extends \yii\db\ActiveRecord
             'highlights' => 'Highlights',
             'address' => 'Address',
             'cat_list_img_path' => 'Category List Image',
+            'cat_id' => 'Category',
         ];
     }
 
@@ -68,7 +70,7 @@ class Eneobizinfo extends \yii\db\ActiveRecord
     public function scenarios()
     {
         $scenarios = parent::scenarios();
-        $scenarios['update'] = ['tel', 'website', 'name', 'highlights', 'address','des'];// only validate these attibutes on update
+        $scenarios['update'] = ['tel', 'website', 'name', 'highlights', 'address','des','cat_id'];// only validate these attibutes on update
         return $scenarios;
     }
 
@@ -80,7 +82,7 @@ class Eneobizinfo extends \yii\db\ActiveRecord
     {   
         // only validate two fields
         // because img_path is is not there 
-        if ($this->validate(array('tel', 'website', 'name', 'highlights', 'address','des'))) {
+        if ($this->validate(array('tel', 'website', 'name', 'highlights', 'address','des','cat_id'))) {
             // upload the image
             $this->imageFile->saveAs('images/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
             return true;

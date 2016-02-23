@@ -36,14 +36,19 @@ class EneoController extends Controller
         return $this->render('index',['categories' =>$c]);
     }
 
-    public function actionCategorylist()
+    public function actionCategorylist($id)
     {
         $this->layout = "eneolayout";
 
-        // get data from category model
-        $l = Eneobizinfo::find()->all();
+        // get category details for the id // I want the name
+        $cat = $this->catNameByID($id);
 
-        return $this->render('categorylist',['catlists'=>$l]);
+        // find by cat_id
+        $l = Eneobizinfo::find()
+        ->where(['cat_id' => $id])
+        ->all();
+
+        return $this->render('categorylist',['catlists'=>$l,'cat'=>$cat]);
     }
     
     public function actionListing($id)
@@ -70,6 +75,14 @@ class EneoController extends Controller
     {
         $this->layout = "eneolayout";
         return $this->render('digital-video');
+    }
+
+    public function catNameByID($id){
+        $cat_name = Category::find()
+        ->where(['id' => $id])
+        ->one();
+
+        return $cat_name;
     }
 
 

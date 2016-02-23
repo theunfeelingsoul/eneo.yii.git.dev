@@ -24,13 +24,10 @@
 							<div class="col-md-12">
 								<div class="page-title-content">
 									<h2 class="page-title">
-										LISTING CATEGORY
+										<?= $cat->title; ?> CATEGORY
 									</h2>
 									<p class="page-title-description">
-										Nulla nisl urna, faucibus eu est eu, rhoncus gravida diam. 
-										Ut egestas placerat eros, ultrices pharetra metus rutrum ac. 
-										Sed id mollis libero. Vivamus fermentum consectetur erat sit 
-										amet mattis.
+										<?= $cat->descrption;  ?>
 									</p>
 								</div>
 							</div>
@@ -42,14 +39,11 @@
 											<div class="cat-row-image">
 												<div class="Cat-image">
 													<?php echo Html::a('<img src="images/'.$catlist['cat_list_img_path'].'" width="400" height="240">', ['eneo/listing','id' => $catlist['id']], ['class' => '']) ?>
-													<a href="">
-														<!-- <img src="images/ $catlist['cat_list_img_path'];" width="400" height="240"> -->
-													</a>
 												</div>
 											</div>
 											<div class="views-field views-field-title">
 												<a href=""><?= $catlist['name'];?></a>
-											</div>
+											</div>	
 
 											<div class="views-field views-field-address">
 												<i class="fa fa-home"></i>
@@ -79,210 +73,6 @@
 										</div>
 									</div>
 								<?php endforeach ; ?>
-								<!-- <div class="cat-row cat-row-2 col-md-4">
-									<div class="cat-row-inner">
-										<div class="cat-row-image">
-											<div class="Cat-image">
-												<a href="">
-													<img src="images/p2.jpg" width="400" height="240">
-												</a>
-											</div>
-										</div>
-										<div class="views-field views-field-title">
-											<a href="">Liston Grilled Seafood</a>
-										</div>
-
-										<div class="views-field views-field-address">
-											<i class="fa fa-home"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-
-										<div class="views-field views-field-phone">
-											<i class="fa fa-phone"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-										
-
-										<div class="views-field views-field-website">
-											<i class="fa fa-globe"></i>
-											<a href="">incredibledesinesafrica.com</a>
-										</div>
-										
-										<div class="cat-row-address">
-											
-										</div>
-										<div class="cat-row-phone">
-											
-										</div>
-										<div class="cat-row-website">
-											
-										</div>
-									</div>
-								</div>
-
-								<div class="cat-row cat-row-3 col-md-4">
-									<div class="cat-row-inner">
-										<div class="cat-row-image">
-											<div class="Cat-image">
-												<a href="">
-													<img src="images/p3.jpg" width="400" height="240">
-												</a>
-											</div>
-										</div>
-										<div class="views-field views-field-title">
-											<a href="">Liston Grilled Seafood</a>
-										</div>
-
-										<div class="views-field views-field-address">
-											<i class="fa fa-home"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-
-										<div class="views-field views-field-phone">
-											<i class="fa fa-phone"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-										
-
-										<div class="views-field views-field-website">
-											<i class="fa fa-globe"></i>
-											<a href="">incredibledesinesafrica.com</a>
-										</div>
-										
-										<div class="cat-row-address">
-											
-										</div>
-										<div class="cat-row-phone">
-											
-										</div>
-										<div class="cat-row-website">
-											
-										</div>
-									</div>
-								</div>
-
-								<div class="cat-row cat-row-4 col-md-4">
-									<div class="cat-row-inner">
-										<div class="cat-row-image">
-											<div class="Cat-image">
-												<a href="">
-													<img src="images/p4.jpg" width="400" height="240">
-												</a>
-											</div>
-										</div>
-										<div class="views-field views-field-title">
-											<a href="">Liston Grilled Seafood</a>
-										</div>
-
-										<div class="views-field views-field-address">
-											<i class="fa fa-home"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-
-										<div class="views-field views-field-phone">
-											<i class="fa fa-phone"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-										
-
-										<div class="views-field views-field-website">
-											<i class="fa fa-globe"></i>
-											<a href="">incredibledesinesafrica.com</a>
-										</div>
-										
-										<div class="cat-row-address">
-											
-										</div>
-										<div class="cat-row-phone">
-											
-										</div>
-										<div class="cat-row-website">
-											
-										</div>
-									</div>
-								</div>
-
-								<div class="cat-row cat-row-5 col-md-4">
-									<div class="cat-row-inner">
-										<div class="cat-row-image">
-											<div class="Cat-image">
-												<a href="">
-													<img src="images/p5.jpg" width="400" height="240">
-												</a>
-											</div>
-										</div>
-										<div class="views-field views-field-title">
-											<a href="">Liston Grilled Seafood</a>
-										</div>
-
-										<div class="views-field views-field-address">
-											<i class="fa fa-home"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-
-										<div class="views-field views-field-phone">
-											<i class="fa fa-phone"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-										
-
-										<div class="views-field views-field-website">
-											<i class="fa fa-globe"></i>
-											<a href="">incredibledesinesafrica.com</a>
-										</div>
-										
-										<div class="cat-row-address">
-											
-										</div>
-										<div class="cat-row-phone">
-											
-										</div>
-										<div class="cat-row-website">
-											
-										</div>
-									</div>
-								</div>
-
-								<div class="cat-row cat-row-6 col-md-4">
-									<div class="cat-row-inner">
-										<div class="cat-row-image">
-											<div class="Cat-image">
-												<a href="">
-													<img src="images/p1.jpg" width="400" height="240">
-												</a>
-											</div>
-										</div>
-										<div class="views-field views-field-title">
-											<a href="">Liston Grilled Seafood</a>
-										</div>
-
-										<div class="views-field views-field-address">
-											<i class="fa fa-home"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-
-										<div class="views-field views-field-phone">
-											<i class="fa fa-phone"></i>
-											25-29 Ardmore Avenue, Avenel
-										</div>
-										
-
-										<div class="views-field views-field-website">
-											<i class="fa fa-globe"></i>
-											<a href="">incredibledesinesafrica.com</a>
-										</div>
-										
-										<div class="cat-row-address">
-											
-										</div>
-										<div class="cat-row-phone">
-											
-										</div>
-										<div class="cat-row-website">
-											
-										</div>
-									</div>
-								</div> -->
 							</div>
 						</div>
 					</div>

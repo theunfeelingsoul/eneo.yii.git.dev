@@ -1,4 +1,5 @@
 <?= $this->render('_searchbar'); ?>
+<?php use yii\helpers\Html; ?>
 <!-- Begin #geo-loc-map -->
 <div id="geo-loc-map">
 	<div class="container-fluid">
@@ -30,9 +31,8 @@
 						<div class="cat-row-inner">
 							<div class="cat-row-image">
 								<div class="Cat-image">
-									<a href="">
-										<img src="images/<?= $category['img_path']; ?>" width="400" height="240">
-									</a>
+									<?php echo Html::a('<img src="images/'.$category['img_path'].'" width="400" height="240">', ['eneo/categorylist','id' => $category['id']], ['class' => '']) ?>
+									
 								</div>
 							</div>
 							<div class="cat-row-name">
