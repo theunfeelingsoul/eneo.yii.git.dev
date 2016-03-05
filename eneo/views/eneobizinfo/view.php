@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'attributes' => [
                 'id',
                 'tel',
+                'geocode',
                 'website',
                 'name',
                 'des:ntext',

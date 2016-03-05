@@ -7,20 +7,20 @@
 					<div class="business-banner-content">
 						<div class="col-md-8">
 							<div class="business-banner-title">
-								Modern Jeans
+								<?= $biz['name'] ?>
 							</div>
 							<div class="business-banner-detail">
 								<div class="business-banner-detail-address">
 									<span class="glyphicon glyphicon-home"></span>
-									Westlands, Mogotio rd,
+									<?= $biz['address'] ?>
 								</div>
 								<div class="business-banner-detail-phone">
 									<span class="glyphicon glyphicon-phone-alt"></span>
-									0722383897
+									<?= $biz['tel'] ?>
 								</div>
 								<div class="business-banner-detail-website">
 									<span class="glyphicon glyphicon-globe"></span>
-									<a href="">Symphony</a>
+									<a href="<?= $biz['website'] ?>"><?= $biz['website'] ?></a>
 								</div>
 							</div>
 						</div>
@@ -81,9 +81,10 @@
 					<div class="business-detail-article">
 						<div class="comtainer-fluid">
 							<div class="row">
-								<h2 class="business-sidebar-article-title">Pixel Playground</h2>
+								<h2 class="business-sidebar-article-title"><?= $biz_vidz['title'] ?></h2>
 								<div class="text-centerk">
-									<iframe width="730" height="315" src="https://www.youtube.com/embed/ofzQqJNEYBk" frameborder="0" allowfullscreen></iframe>
+									<!-- <iframe width="730" height="315" src="<?php echo $biz_vidz['url'] ?>" frameborder="0" allowfullscreen></iframe> -->
+									<video width="730" height="315"> <source src="images/uploads/"'.$biz_vid['url'].' type="video/mp4"></video>
 									<!-- <iframe width="730" height="415" src="https://www.youtube.com/embed/Xuav1TPhLQw" frameborder="0" allowfullscreen></iframe> -->
 								</div>
 							</div>
@@ -98,8 +99,8 @@
 									<!-- Tab panes -->
 									<div class="tab-content">
 										<div role="tabpanel" class="tab-pane active" id="home">
-											<h5>Pixel playgroundsayground</h5>
-											Take a 10-minute recess every week and join Bert Monroy in Adobe Photoshop or Illustrator, the playgrounds of digital artists. Every Friday Bert walks through a fun, self-contained project that tests your skills and challenges the imagination. These programs aren't just image editors; they are sandboxes for creativity and experimentation. Take a spin through a carousel of tools and get reinspired, each and every week
+											<h5></h5>
+											<?= $biz_vidz['des'] ?>
 										</div>
 										<div role="tabpanel" class="tab-pane" id="profile">...</div>
 									</div>

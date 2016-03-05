@@ -3,6 +3,7 @@
 namespace app\controllers;
 use app\models\Category;
 use app\models\Eneobizinfo;
+use app\models\Advideos;
 
 use Yii;
 use yii\web\Controller;
@@ -33,8 +34,23 @@ class EneoController extends Controller
         // get data from category model
         $c = Category::find()->all();
         
-        return $this->render('index',['categories' =>$c]);
+        $g = $this->groupGeocodes();
+        return $this->render('index',['categories' =>$c,'groupcodes' => $g]);
     }
+
+    function groupGeocodes(){
+        $geocodes = Eneobizinfo::find()->all();
+        $g='';
+        foreach ($geocodes as $key => $geocode) {
+            if (!empty($geocode['geocode'])) {
+                $g.=$geocode['geocode'].','.$geocode['cat_id'].'#';
+            }
+            
+        }
+
+        return $g;
+    }
+
 
     public function actionCategorylist($id)
     {
@@ -48,7 +64,8 @@ class EneoController extends Controller
         ->where(['cat_id' => $id])
         ->all();
 
-        return $this->render('categorylist',['catlists'=>$l,'cat'=>$cat]);
+        $g = $this->groupGeocodes();
+        return $this->render('categorylist',['catlists'=>$l,'cat'=>$cat,'groupcodes' => $g]);
     }
     
     public function actionListing($id)
@@ -62,19 +79,39 @@ class EneoController extends Controller
         return $this->render('listing',['biz'=>$biz]);
     }
 
-    public function actionDigital()
+
+    public function actionDigital($id)
     {
         $this->layout = "eneolayout";
 
         // FIND BY ID
+        $biz_vidz = Advideos::find()
+        ->where(['biz_id' => $id])
+        ->all();
 
-        return $this->render('digital');
+        return $this->render('digital',['biz_vidz' => $biz_vidz]);
     }
 
-    public function actionVideo()
+    /**
+     * actionVideo()
+     *
+     * show the chosen video
+     *
+     * @param   (int)       (id)            video id to be shown
+     * @return  (mixed)
+     */
+    public function actionVideo($id)
     {
         $this->layout = "eneolayout";
-        return $this->render('digital-video');
+
+        $biz_vidz = Advideos::find()
+        ->where(['biz_id' => $id])
+        ->one();
+
+        $biz = Eneobizinfo::find()
+        ->where(['id' => $id])
+        ->one();
+        return $this->render('digital-video',['biz_vidz' => $biz_vidz,'biz'=>$biz]);
     }
 
     public function catNameByID($id){

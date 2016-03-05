@@ -21,6 +21,8 @@ use app\models\Category;
 
     <?= $form->field($model, 'cat_list_img_path')->fileInput() ?>
 
+    <?= $form->field($model, 'geocode')->textInput(['maxlength' => true]) ?>
+    
     <?= $form->field($model, 'tel')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'website')->textInput(['maxlength' => true]) ?>

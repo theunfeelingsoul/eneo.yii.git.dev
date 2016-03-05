@@ -1,3 +1,4 @@
+<?php use yii\helpers\Html; ?>
 <div class="container-fluid">
 	<div class="row">
 		<!-- #business-banner -->
@@ -25,7 +26,7 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-						
+							<div id="map-gecode"><?=$biz['geocode'];?></div>
 							<div class="field-map" id="map-c">
 								<!-- <div class="field-map"></div> -->
 							</div>
@@ -58,6 +59,70 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="business-detail-article">
+
+						<div class="field field-name-field-photos">
+							<div class="field-label ">Photos</div>
+							<div class="container-fluid">
+								<div class="field-items row">
+									<div class="field-item-odd">
+										<a href="">
+											<img src="images/food1.jpg">
+										</a>
+									</div>
+									<div class="field-item-even">
+										<a href="">
+											<img src="images/food2.jpg">
+										</a>
+									</div>
+									<div class="field-item-odd">
+										<a href="">
+											<img src="images/food3.jpg">
+										</a>
+									</div>
+									<div class="field-item-even">
+										<a href="">
+											<img src="images/food4.jpg">
+										</a>
+									</div>
+									<div class="field-item-odd field-item-view-more">
+										
+										<?= Html::a('View More', ['eneo/digital','id' => $biz['id']], ['class' => '']) ?>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="field field-name-field-videos">
+							<div class="field-label ">Videos</div>
+							<div class="container-fluid">
+								<div class="field-items row">
+									<div class="field-item-odd">
+										<a href="clistingvideo.php">
+											<img src="images/food1.jpg">
+										</a>
+									</div>
+									<div class="field-item-even">
+										<a href="clistingvideo.php">
+											<img src="images/food2.jpg">
+										</a>
+									</div>
+									<div class="field-item-odd">
+										<a href="clistingvideo.php">
+											<img src="images/food3.jpg">
+										</a>
+									</div>
+									<div class="field-item-even">
+										<a href="clistingvideo.php">
+											<img src="images/food4.jpg">
+										</a>
+									</div>
+									<div class="field-item-odd field-item-view-more">
+										<?= Html::a('View More', ['eneo/digital','id' => $biz['id']], ['class' => '']) ?>
+									</div>
+								</div>
+							</div>
+						</div>
+
 						<div class="field field-name-body">
 							<div class="field-label ">Description:&nbsp;</div>
 							<div class="field-items">
@@ -103,61 +168,7 @@
 							</div>
 						</div> -->
 
-						<div class="field field-name-field-photos">
-							<div class="field-label ">Photos</div>
-							<div class="container-fluid">
-								<div class="field-items row">
-									<div class="field-item-odd">
-										<a href="">
-											<img src="images/food1.jpg">
-										</a>
-									</div>
-									<div class="field-item-even">
-										<a href="">
-											<img src="images/food2.jpg">
-										</a>
-									</div>
-									<div class="field-item-odd">
-										<a href="">
-											<img src="images/food3.jpg">
-										</a>
-									</div>
-									<div class="field-item-even">
-										<a href="">
-											<img src="images/food4.jpg">
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="field field-name-field-videos">
-							<div class="field-label ">Videos</div>
-							<div class="container-fluid">
-								<div class="field-items row">
-									<div class="field-item-odd">
-										<a href="clistingvideo.php">
-											<img src="images/food1.jpg">
-										</a>
-									</div>
-									<div class="field-item-even">
-										<a href="clistingvideo.php">
-											<img src="images/food2.jpg">
-										</a>
-									</div>
-									<div class="field-item-odd">
-										<a href="clistingvideo.php">
-											<img src="images/food3.jpg">
-										</a>
-									</div>
-									<div class="field-item-even">
-										<a href="clistingvideo.php">
-											<img src="images/food4.jpg">
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				<div class="col-md-4">

@@ -4,6 +4,7 @@
 <div id="geo-loc-map">
 	<div class="container-fluid">
 		<div class="row">
+			<div id="group-map-geocode"><?=$groupcodes;?></div>
 			<div id="map">
 				
 			</div>

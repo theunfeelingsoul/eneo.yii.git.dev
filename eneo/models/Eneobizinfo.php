@@ -17,6 +17,7 @@ use yii\web\UploadedFile;
  * @property string $address
  * @property string $cat_list_img_path
  * @property string $cat_id
+ * @property string $geocode
  */
 class Eneobizinfo extends \yii\db\ActiveRecord
 {
@@ -43,7 +44,7 @@ class Eneobizinfo extends \yii\db\ActiveRecord
             [['cat_list_img_path'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg','on'=>'create'], 
             [['tel', 'website', 'name', 'des', 'highlights', 'address','cat_id'], 'required'],
             [['des'], 'string'],
-            [['tel', 'website', 'name', 'highlights', 'address'], 'string', 'max' => 255]
+            [['tel', 'website', 'name', 'highlights', 'address','geocode'], 'string', 'max' => 255]
         ];
     }
 
@@ -62,6 +63,7 @@ class Eneobizinfo extends \yii\db\ActiveRecord
             'address' => 'Address',
             'cat_list_img_path' => 'Category List Image',
             'cat_id' => 'Category',
+            'geocode' => 'Geocode',
         ];
     }
 

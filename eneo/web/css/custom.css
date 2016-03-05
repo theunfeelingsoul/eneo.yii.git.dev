@@ -514,6 +514,10 @@ body{
 	/*background-color: grey;*/
 }
 
+#map-gecode,#group-map-geocode{
+	display: none;
+}
+
 
 
 
@@ -893,6 +897,25 @@ a.btn-primary, #business-detail-review .btn-primary, #cmb {
 
 .field-item-odd, .field-item-even{
 	float: left;
+}
+
+.field-item-view-more{
+	padding-top: 40px;
+	font-size: large;
+	width: 100px;
+	height: 100px;
+	background-color: #17aa1c;
+	color: #fff;
+	text-align: center;
+}
+
+.field-item-view-more a{
+	color: #fff;
+	text-decoration: none;
+}
+
+.field-item-view-more:hover{
+	background-color: rgba(0, 191, 243, 0.78);
 }
 
 .field-item-even{

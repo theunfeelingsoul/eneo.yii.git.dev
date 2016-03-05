@@ -38,8 +38,26 @@ todo
 4. Create backend video upload 
 5. Create front end display 
 
+3/2/2016 Web
+-------------
+1. Removed the scroll effect on the maps
+
+todo
+----
+1. The login
+2. fix the admin theme
 
 
+3/4/2016
+--------
+4. add lat lang to biz profile
+1. Create single marker for business
+2. create markers for adjacent businesses
+3. Add an nice icon image for marker
+todo
+----
+
+- add map marker images according to type of category 
 
 
 

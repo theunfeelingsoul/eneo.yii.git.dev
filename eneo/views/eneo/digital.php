@@ -107,24 +107,29 @@
 						</div>
 						<div class="container-fluid">
 							<!-- <div class="row"> -->
-								<div class="row video-list">
-									<div class="video-list-">
-										<div class="col-sm-3">
-											<!-- <a href="clistingplayvideo.php"><img src="images/video1.png"></a> -->
-											<?php echo Html::a('<video width="162" height="91"> <source src="images/uploads/11793.mp4" type="video/mp4"></video>',['eneo/video'], ['class' => '']) ?>
+								<?php 
+									foreach ($biz_vidz as $key => $biz_vid):?>
+										<div class="row video-list">
+											<div class="video-list-">
+												<div class="col-sm-3">
+													<!-- <a href="clistingplayvideo.php"><img src="images/video1.png"></a> -->
+													<?php echo Html::a('<video width="162" height="91"> <source src="images/uploads/"'.$biz_vid['url'].' type="video/mp4"></video>',['eneo/video','id'=>$biz_vid['biz_id']], ['class' => '']) ?>
+												</div>
+												<div class="col-sm-9">
+													<h5 class=""><a href="clistingplayvideo.php"><?= $biz_vid['title'] ?></a></h5>
+													<p>
+														<?= $biz_vid['des'] ?>
+													</p>
+													<p>10min </p>
+												</div>
+											</div>
 										</div>
-										<div class="col-sm-9">
-											<h5 class=""><a href="clistingplayvideo.php">Video 1</a></h5>
-											<p>
-												Minim wisi corporis anim, nemo eius, in egestas.
-												Minim wisi corporis anim, nemo eius, in egestas.
-											</p>
-											<p>10min </p>
-										</div>
-									</div>
-								</div>
 
-								<div class="row video-list">
+									<?php endforeach; ?>
+								 
+							
+
+								<!-- <div class="row video-list">
 									<div class="video-list-">
 										<div class="col-sm-3">
 											<a href="clistingplayvideo.php"><img src="images/video2.png"></a>
@@ -154,7 +159,7 @@
 											<p>10min </p>
 										</div>
 									</div>
-								</div>
+								</div> -->
 							<!-- </div> -->
 						</div>
 					</div>
