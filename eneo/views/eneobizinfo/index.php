@@ -10,7 +10,7 @@ use yii\grid\GridView;
 $this->title = 'Eneobizinfos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="col-md-11 col-md-offset-1">
+<div class="col-md-10">
     <div class="eneobizinfo-index">
 
         <h1><?= Html::encode($this->title) ?></h1>

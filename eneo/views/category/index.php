@@ -11,7 +11,7 @@ use yii\widgets\Breadcrumbs;
 $this->title = 'Categories';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="col-md-11 col-md-offset-1">
+<div class="col-md-10">
     <div class="category-index">
 
         <div class="widget-breadcrums">

@@ -31,7 +31,7 @@ body{
 }
 
 .inside-left li a:hover, .inside-right li a:hover{
-	color: #00bff3;
+	color: #9a82bc;
 }
 
 .inside-left .glyphicon, .inside-right .glyphicon{
@@ -87,7 +87,7 @@ body{
 }
 
 .menu-nav li:hover{
-	background: #00bff3;
+	background: #9a82bc;
 	color: #fff;
 }
 
@@ -121,7 +121,7 @@ body{
 	min-width: 180px;
 	color: #fff;
 	border-bottom: 1px solid #6edbf8;
-	background: #00bff3; 
+	background: #9a82bc; 
 
 }
 
@@ -177,7 +177,7 @@ body{
 }
 
 .navbar-default .navbar-nav>.active{
-	background-color: #00bff3;
+	background-color: #9a82bc;
 }
 
 
@@ -194,7 +194,7 @@ body{
 }
 
 .navbar-nav > li:hover{
-	background: #00bff3;
+	background: #9a82bc;
 }
 
 .navbar-nav>li>a:hover{
@@ -218,7 +218,7 @@ body{
 }
 
 .dropdown-menu{
-	background: #00bff3; 
+	background: #9a82bc; 
 	border: none;
 	border-radius: 0px;
 	-webkit-box-shadow:none;
@@ -323,7 +323,7 @@ body{
 /*********************************************************************/
 
 #search-wrapper {
-    background: #00bff3;
+    background: #9a82bc;
     padding: 20px 0px;
     margin: 0;
 }
@@ -333,7 +333,7 @@ body{
     margin: 0px 20px 0px 0;
     padding: 13px 20px 13px 0;
     /*position: relative;*/
-     /*background: #00bff3; */
+     /*background: #9a82bc; */
     border-right: 1px solid #6edbf8;
     font-size: 20px;
     text-transform: uppercase;
@@ -538,7 +538,7 @@ body{
 /*********************************************************************/
 
 #business-categories{
-	background: #00bff3;
+	background: #9a82bc;
 	padding: 60px 0 40px;
 }
 
@@ -555,7 +555,7 @@ body{
 	content: "";
     width: 60px;
     height: 2px;
-    /*background: #00bff3;*/
+    /*background: #9a82bc;*/
     float: left;
     position: absolute;
     bottom: 0;
@@ -622,7 +622,7 @@ body{
 	position: absolute;
     width: 60px;
     height: 2px;
-    background: #00bff3;
+    background: #9a82bc;
     bottom: 0;
     left: 20px;
     content: "";
@@ -706,7 +706,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 a, a:link, a:visited {
-    color: #00bff3;
+    color: #9a82bc;
 }
 
 .views-field-address,
@@ -720,7 +720,7 @@ a, a:link, a:visited {
 .views-field-address i, 
 .views-field-phone i, 
 .views-field-website i {
-    color: #00bff3;
+    color: #9a82bc;
     width: 25px;
 }
 
@@ -745,7 +745,7 @@ a, a:link, a:visited {
 
 #business-banner{
 	height: 300px;
-	border-top: 1px solid #00bff3;
+	border-top: 1px solid #9a82bc;
 	background: red; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(#eef2f3, #8e9eab); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#eef2f3, #8e9eab); /* For Opera 11.1 to 12.0 */
@@ -813,7 +813,7 @@ a, a:link, a:visited {
 }
 
 a.btn-primary, #business-detail-review .btn-primary, #cmb {
-    background-color: #00bff3 !important;
+    background-color: #9a82bc !important;
     border-color: #1896b8;
     color: #FFFFFF;
     background-image:none; 
@@ -859,11 +859,11 @@ a.btn-primary, #business-detail-review .btn-primary, #cmb {
 .field-label {
     font-family: 'Raleway', sans-serif;
     padding-bottom: 10px;
-    color: #00bff3;
+    color: #9a82bc;
 }
 
 .field:before {
-    background: #00bff3;
+    background: #9a82bc;
 }
 
 .field.field-name-body:before {
@@ -939,7 +939,7 @@ a.btn-primary, #business-detail-review .btn-primary, #cmb {
     float: left;
     position: absolute;
     left: 0;
-    background: #00bff3;
+    background: #9a82bc;
     color: #fff;
     padding: 8px 0px;
     width: 50px;

@@ -59,6 +59,19 @@ todo
 
 - add map marker images according to type of category 
 
+3/6/2016
+--------
+1. chnage color to #9a82bc - purple from blue 00bff3
+todo
+-----
+
+CHange admin to be like front end
+3. make admin content cetntered like google plus
+4. add link from youtube
+5. get images from youtube
+6. add login function
+7. add video links at front end
+
 
 
 
