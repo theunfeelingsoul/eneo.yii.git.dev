@@ -10,11 +10,14 @@ use Yii;
  * @property integer $id
  * @property string $username
  * @property string $password
- * @property string $authKey
- * @property string $accessToken
+ * @property string $gender
+ * @property string $country
+ * @property string $email
  */
 class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
+    public $captcha;
+    public $password_repeat;
     /**
      * @inheritdoc
      */
@@ -29,8 +32,10 @@ class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInte
     public function rules()
     {
         return [
-            [['username', 'password', 'authKey', 'accessToken'], 'required'],
-            [['username', 'password', 'authKey', 'accessToken'], 'string', 'max' => 255]
+            [['username', 'password', 'country', 'email','captcha','password_repeat'], 'required'],
+            [['username', 'password', 'country', 'email','gender'], 'string', 'max' => 50],
+            ['captcha', 'captcha'],
+            ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match" ],
         ];
     }
 
@@ -43,8 +48,9 @@ class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInte
             'id' => 'ID',
             'username' => 'Username',
             'password' => 'Password',
-            'authKey' => 'Auth Key',
-            'accessToken' => 'Access Token',
+            'country' => 'Country',
+            'gender' => 'Gender',
+            'email' => 'E-mail',
         ];
     }
 

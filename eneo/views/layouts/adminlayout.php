@@ -24,12 +24,13 @@ EneoAsset::register($this);
 <div id="business-banner-line">
 </div>
 
-<div class="container-fluid">
+<div class="container">
 	<div class="row">
 		<div class="sidebar col-md-2">
 			<div class="row">
 				<ul class="nav-sidebar">
-					<!-- <div>Admin</div> -->
+					<!-- <li><span class="glyphicon glyphicon-dashboard"></span>&nbsp;&nbsp;&nbsp;Sidebar</li> -->
+					<li>Sidebar</li>
 					<?= 
 						Yii::$app->controller->id == 'category' ? 
 						'<li class="nav-sidebar-active nav-sidebar-seperator">':

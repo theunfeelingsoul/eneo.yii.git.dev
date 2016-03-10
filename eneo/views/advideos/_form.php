@@ -21,7 +21,6 @@ use app\models\EneoBizinfo;
 
         <?= $form->field($model, 'des')->textarea(['rows' => 6]) ?>
 
-
         <!-- = $form->field($model, 'url')->fileInput()  -->
 
         <?= $form->field($model, 'vid_cat_id')->dropDownList(
