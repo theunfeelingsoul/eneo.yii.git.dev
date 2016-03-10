@@ -96,26 +96,19 @@
 							<div class="field-label ">Videos</div>
 							<div class="container-fluid">
 								<div class="field-items row">
-									<div class="field-item-odd">
-										<a href="clistingvideo.php">
-											<img src="images/food1.jpg">
-										</a>
-									</div>
-									<div class="field-item-even">
-										<a href="clistingvideo.php">
-											<img src="images/food2.jpg">
-										</a>
-									</div>
-									<div class="field-item-odd">
-										<a href="clistingvideo.php">
-											<img src="images/food3.jpg">
-										</a>
-									</div>
-									<div class="field-item-even">
-										<a href="clistingvideo.php">
-											<img src="images/food4.jpg">
-										</a>
-									</div>
+									<?php $i = 1; foreach ($biz_vidz as $key => $biz_vid): ?>
+
+										<?php if ($i % 2 == 0) :?>
+											<div class="field-item-even">
+										<?php else: ?>
+											<div class="field-item-odd">
+										<?php endif; ?>
+											<a href="clistingvideo.php">
+												<?php echo Html::a('<img height="100"src="http://img.youtube.com/vi/'.$biz_vid['url'].'/default.jpg">',['eneo/video','id'=>$biz_vid['id']], ['class' => '']) ?>
+											</a>
+										</div>
+									
+								<?php $i++; endforeach; ?>
 									<div class="field-item-odd field-item-view-more">
 										<?= Html::a('View More', ['eneo/digital','id' => $biz['id']], ['class' => '']) ?>
 									</div>

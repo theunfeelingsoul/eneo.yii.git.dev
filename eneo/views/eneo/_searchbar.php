@@ -1,3 +1,4 @@
+<?php use app\models\Category; ?>
 <!-- Begin search wrapper -->
 <div id="search-wrapper">
 	<div class="container">
@@ -20,9 +21,11 @@
 						<span class="search-form-select1-icon"><i class="fa fa-sitemap"></i></span>
 						<select class="form-control search-form-select-input">
 							<option selecetd="selected">Categories</option>
-							<option>Shopping</option>
-							<option>Nightlife</option>
-							
+							<?php  // get data from category model
+						        $c = Category::find()->all();
+	        					foreach ($c as $key => $value):?>
+									<option value="<?=$value['id'] ?>"><?=$value['title'] ?></option>
+	        					<?php endforeach;  ?>
 						</select>
 					</div>
 					<div class="form-group search-form-input">

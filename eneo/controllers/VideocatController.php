@@ -3,17 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Advideos;
-use app\models\AdvideosSearch;
+use app\models\Videocat;
+use app\models\VideocatSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * AdvideosController implements the CRUD actions for Advideos model.
+ * VideocatController implements the CRUD actions for Videocat model.
  */
-class AdvideosController extends Controller
+class VideocatController extends Controller
 {
     public function behaviors()
     {
@@ -28,14 +27,14 @@ class AdvideosController extends Controller
     }
 
     /**
-     * Lists all Advideos models.
+     * Lists all Videocat models.
      * @return mixed
      */
     public function actionIndex()
-    {
+    {   
         $this->layout = "adminlayout";
-        
-        $searchModel = new AdvideosSearch();
+
+        $searchModel = new VideocatSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,31 +44,30 @@ class AdvideosController extends Controller
     }
 
     /**
-     * Displays a single Advideos model.
+     * Displays a single Videocat model.
      * @param integer $id
      * @return mixed
      */
     public function actionView($id)
-    {
+    {   
         $this->layout = "adminlayout";
-        
+
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Advideos model.
+     * Creates a new Videocat model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-     public function actionCreate()
+    public function actionCreate()
     {
         $this->layout = "adminlayout";
-        
-        $model = new Advideos();
 
-        //to do check if id is ok
+        $model = new Videocat();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -78,48 +76,9 @@ class AdvideosController extends Controller
             ]);
         }
     }
-    // public function old_actionCreate()
-    // {
-    //     $this->layout = "adminlayout";
-        
-    //     $model = new Advideos();
-
-    //     if ($model->load(Yii::$app->request->post()) ) {                
-
-    //         $model->imageFile = UploadedFile::getInstance($model, 'url');
-    //         // Create a name
-    //         $x = rand();
-    //         $model->url = $x;
-            
-    //         if ($model->upload($x)) { 
-    //             // file is uploaded successfully
-    //             if ($model->save(false)) {
-    //                return $this ->redirect(['view', 'id' => $model->id]);
-    //             }else{
-    //                 return $model->getErrors();
-    //             }
-    //         }else{
-    //             echo "did not upload";
-    //         }
-
-            
-    //     } else {
-    //         return $this->render('create', [
-    //             'model' => $model,
-    //         ]);
-    //     }
-
-    //     // if ($model->load(Yii::$app->request->post()) && $model->save()) {
-    //     //     return $this->redirect(['view', 'id' => $model->id]);
-    //     // } else {
-    //     //     return $this->render('create', [
-    //     //         'model' => $model,
-    //     //     ]);
-    //     // }
-    // }
 
     /**
-     * Updates an existing Advideos model.
+     * Updates an existing Videocat model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -140,7 +99,7 @@ class AdvideosController extends Controller
     }
 
     /**
-     * Deletes an existing Advideos model.
+     * Deletes an existing Videocat model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -153,15 +112,15 @@ class AdvideosController extends Controller
     }
 
     /**
-     * Finds the Advideos model based on its primary key value.
+     * Finds the Videocat model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Advideos the loaded model
+     * @return Videocat the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Advideos::findOne($id)) !== null) {
+        if (($model = Videocat::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

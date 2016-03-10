@@ -42,6 +42,8 @@ class EneobizinfoSearch extends Eneobizinfo
     public function search($params)
     {
         $query = Eneobizinfo::find();
+        // ->where(['user_id' => Yii::$app->user->identity->id])
+        // ->all();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,6 +59,7 @@ class EneobizinfoSearch extends Eneobizinfo
 
         $query->andFilterWhere([
             'id' => $this->id,
+            'user_id' => Yii::$app->user->identity->id,
         ]);
 
         $query->andFilterWhere(['like', 'tel', $this->tel])

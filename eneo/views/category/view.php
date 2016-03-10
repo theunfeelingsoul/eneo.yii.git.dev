@@ -10,7 +10,7 @@ $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="col-md-11 col-md-offset-1">
+<div class="col-md-5 col-md-offset-2">
     <div class="category-view">
         <div class="widget-breadcrums">
              <?= Breadcrumbs::widget([

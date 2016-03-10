@@ -1,6 +1,6 @@
 /* GENERAL ELEMENTS */
 body{
-	background-color: #F1F1F1;
+	/*background-color: #F1F1F1;*/
 }
 
 
@@ -28,7 +28,7 @@ body{
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #eee;
+	/*color: #eee;*/
 }
 
 @media (min-width: 768px){
@@ -73,7 +73,12 @@ body{
 
 
 .nav-sidebar li:hover{
-	background-color: #E7E7E7;
+	background-color: #F9F9F9;
+	cursor: pointer;
+}
+.nav-sidebar-active{
+	/*background-color: #E7E7E7;*/
+		background-color: #FDF8FF;
 }
 
 

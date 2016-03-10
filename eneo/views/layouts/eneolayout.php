@@ -54,107 +54,216 @@ EneoAsset::register($this);
 		} // end initialize
 
 
+
+		/**
+		 * Displays a google map with business coordinates.
+		 * Also shows the geolocation of user if permitted.
+		 *
+		 * @return {Number} sum
+		 */
+
+		 function initialize(){
+		 	/* step 1. First get all the geocodes from a poulated div called #group-map-geocode */
+			    var i;
+				// get all the geocodes in the database
+				// this is a string
+				var map_gecode = document.getElementById('group-map-geocode');
+				// console.log(map_gecode);
+
+				// get the content of the div
+				var map_gecode = map_gecode.innerHTML;
+
+				// split the gecodes string and add convert them to arrays
+				var locations = map_gecode.split("#");
+				// var arr2 = [];
+				for (i = 0; i < locations.length; i++) {
+				        locations[i]=locations[i].split(",");
+				} 
+
+			/* step 2. Create the map*/
+			    var map = new google.maps.Map(document.getElementById('map'), {
+			      zoom: 8,
+			      center: new google.maps.LatLng(-1.290915, 36.823788),
+			      scrollwheel: false,
+			      mapTypeId: google.maps.MapTypeId.ROADMAP
+			    });
+
+			    var infowindow = new google.maps.InfoWindow();
+
+			    var marker, i;
+			    var image = 'images/marker-icon.png';
+			    for (i = 0; i < locations.length; i++) {  
+			    	var x = parseInt(locations[i][2]);
+						console.log(x);
+
+			      marker = new google.maps.Marker({
+			        position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+			        map: map,
+			        // icon: image
+			        	// icon: 'images/maps/cat/5.png',
+			        icon: 'images/maps/cat/'+locations[i][2]+'.png'
+			      });
+
+			      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			        return function() {
+			          infowindow.setContent(locations[i][0]);
+			          infowindow.open(map, marker);
+			        }
+			      })(marker, i));
+			    }
+
+
+			    // Try HTML5 geolocation.
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function(position) {
+						var pos = {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude
+						};
+
+						// infowindow.setPosition(pos);
+						// infowindow.setContent('Location found.');
+						map.setCenter(pos);
+					}, function() {
+						// handleLocationError(true, infowindow, map.getCenter());
+					});
+				} else {
+					// Browser doesn't support Geolocation
+					// handleLocationError(false, infowindow, map.getCenter());
+				}
+
+
+				function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+				  infowindow.setPosition(pos);
+				  infowindow.setContent(browserHasGeolocation ?
+				                        'Error: The Geolocation service failed.' :
+				                        'Error: Your browser doesn\'t support geolocation.');
+				}
+
+
+
+
+
+
+
+
+
+
+		} // end
 		// this map is the big maps
-		function initialize() {
-			var i;
-			//get all the geocodes in the database
-			// this is a string
-			var map_gecode = document.getElementById('group-map-geocode');
-			// console.log(map_gecode);
-			var map_gecode = map_gecode.innerHTML;
+		function initialize__() {
 
-			// split the gecodes and add them in arrays
-			var arr1 = map_gecode.split("#");
-			var arr2 = [];
-			for (i = 0; i < arr1.length; i++) {
-			        arr2[i]=arr1[i].split(",");
-			} 
-			
+			/* step 1. First get all the geocodes from a poulated div called #group-map-geocode */
+				var i;
+				// get all the geocodes in the database
+				// this is a string
+				var map_gecode = document.getElementById('group-map-geocode');
+				// console.log(map_gecode);
 
- 			
-			var locations = arr2;
+				// get the content of the div
+				var map_gecode = map_gecode.innerHTML;
 
-			console.log(locations);
+				// split the gecodes string and add convert them to arrays
+				var locations = map_gecode.split("#");
+				// var arr2 = [];
+				for (i = 0; i < locations.length; i++) {
+				        locations[i]=locations[i].split(",");
+				} 
 
-			// create the map
-		    var map = new google.maps.Map(document.getElementById('map'), {
-		      zoom: 15,
-		      center: new google.maps.LatLng(-7.443954, 36.719101),
-		      mapTypeId: google.maps.MapTypeId.ROADMAP
-		    });
+				// I removed last array
+				// conatined a null value 
+				// no idea why
+				locations.pop();
+				console.log(locations);
 
+ 			/* step 2. Create the map*/
+				// var locations = arr2;
+				// console.log(locations);
 
-		    var infowindow = new google.maps.InfoWindow({map: map});
+				// create the map
+				// the center is hardcoded
+			    var map = new google.maps.Map(document.getElementById('map'), {
+			      zoom: 15,
+			      center: new google.maps.LatLng(-7.443954, 36.719101),
+			      scrollwheel: false,
+			      mapTypeId: google.maps.MapTypeId.ROADMAP
+			    });
 
-		    var marker, i;
+			/* step 3. Create the map markers with the geocodes you just rcieved*/
+			    // var infowindow = new google.maps.InfoWindow({map: map});
+			    var infowindow = new google.maps.InfoWindow();
 
-		    // image for the markers
-		    var image8 = {
-				url: 'images/maps/red.png',
-				// This marker is 20 pixels wide by 32 pixels high.
-				// size: new google.maps.Size(20, 32),
-				// The origin for this image is (0, 0).
-				// origin: new google.maps.Point(0, 0),
-				// The anchor for this image is the base of the flagpole at (0, 32).
-				// anchor: new google.maps.Point(0, 32)
-			};
+			    var marker, i;
 
-			var image = ['images/maps/cat/5.png','images/maps/cat/8.png','images/maps/cat/8.png','images/maps/cat/8.png','images/maps/cat/8.png'];
+			    // image for the markers
+			 //    var image8 = {
+				// 	url: 'images/maps/red.png',
+				// 	// This marker is 20 pixels wide by 32 pixels high.
+				// 	// size: new google.maps.Size(20, 32),
+				// 	// The origin for this image is (0, 0).
+				// 	// origin: new google.maps.Point(0, 0),
+				// 	// The anchor for this image is the base of the flagpole at (0, 32).
+				// 	// anchor: new google.maps.Point(0, 32)
+				// };
 
-			// var shape = {
-			// 	coords: [1, 1, 1, 20, 18, 20, 18, 1],
-			// 	type: 'poly'
-			// };
+				// create an array with the images for the markers
+				// var image = ['images/maps/cat/5.png','images/maps/cat/8.png','images/maps/cat/8.png','images/maps/cat/8.png','images/maps/cat/8.png'];
 
-			// create the markers
-		    for (i = 0; i < locations.length; i++) {
-		      // var i =  locations[i][2];
-		      // var image =  image+locations[i][2];
-		      // console.log(image);
-		      var x = parseInt(locations[i][2]);
-		      console.log(x);
-		      marker = new google.maps.Marker({
-		        position: new google.maps.LatLng(locations[i][0], locations[i][1]),
-		        map: map,
-		        icon: 'images/maps/cat/'+locations[i][2]+'.png'
-				// shape: shape
-		      });
+				// var shape = {
+				// 	coords: [1, 1, 1, 20, 18, 20, 18, 1],
+				// 	type: 'poly'
+				// };
 
-		      // google.maps.event.addListener(marker, 'click', (function(marker, i) {
-		      //   return function() {
-		      //     infowindow.setContent(locations[i][0]);
-		      //     infowindow.open(map, marker);
-		      //   }
-		      // })(marker, i));
-		    }
+				// create the markers
+			    for (i = 0; i < locations.length; i++) {
+			    	// locations[i][2] is the category id. 
+			    	// convert to an integer
+					var x = parseInt(locations[i][2]);
+					console.log(x);
+					marker = new google.maps.Marker({
+						position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+						map: map,
+						// this is the image path for the custom marker image
+						icon: 'images/maps/cat/5.png',
+						// icon: 'images/maps/cat/'+locations[i][2]+'.png'
+						// shape: shape
+					});
+
+			      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+			        return function() {
+			          infowindow.setContent(locations[i][0]);
+			          infowindow.open(map, marker);
+			        }
+			      })(marker, i));
+			    }
 
 
 		     // Try HTML5 geolocation.
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(function(position) {
-					var pos = {
-						lat: position.coords.latitude,
-						lng: position.coords.longitude
-					};
+			// if (navigator.geolocation) {
+			// 	navigator.geolocation.getCurrentPosition(function(position) {
+			// 		var pos = {
+			// 			lat: position.coords.latitude,
+			// 			lng: position.coords.longitude
+			// 		};
 
-					// infowindow.setPosition(pos);
-					// infowindow.setContent('Location found.');
-					map.setCenter(pos);
-				}, function() {
-					handleLocationError(true, infowindow, map.getCenter());
-				});
-			} else {
-				// Browser doesn't support Geolocation
-				handleLocationError(false, infowindow, map.getCenter());
-			}
+			// 		// infowindow.setPosition(pos);
+			// 		// infowindow.setContent('Location found.');
+			// 		map.setCenter(pos);
+			// 	}, function() {
+			// 		// handleLocationError(true, infowindow, map.getCenter());
+			// 	});
+			// } else {
+			// 	// Browser doesn't support Geolocation
+			// 	// handleLocationError(false, infowindow, map.getCenter());
+			// }
 
 
-			function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-			  infowindow.setPosition(pos);
-			  infowindow.setContent(browserHasGeolocation ?
-			                        'Error: The Geolocation service failed.' :
-			                        'Error: Your browser doesn\'t support geolocation.');
-			}
+			// function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+			//   infowindow.setPosition(pos);
+			//   infowindow.setContent(browserHasGeolocation ?
+			//                         'Error: The Geolocation service failed.' :
+			//                         'Error: Your browser doesn\'t support geolocation.');
+			// }
 
 		} // end initialize
 
@@ -163,34 +272,34 @@ EneoAsset::register($this);
 
 
 		function initialize_mapc() {
-			var mapCanvas_c = document.getElementById('map-c');
+			// var mapCanvas_c = document.getElementById('map-c');
 
-			var map_gecode = document.getElementById('map-gecode');
-			var map_gecode = map_gecode.innerHTML;
-			// console.log(map_gecode);
+			// var map_gecode = document.getElementById('map-gecode');
+			// var map_gecode = map_gecode.innerHTML;
+			// // console.log(map_gecode);
 			
-			var map_gecode_lat_lang = map_gecode.split(",");
-			console.log(map_gecode_lat_lang[0]);
-			var mapOptions = {
-				center: new google.maps.LatLng(map_gecode_lat_lang[0],map_gecode_lat_lang[1]),
-				zoom: 15,
-				// scrollwheel: false,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			}
-			var map_c = new google.maps.Map(mapCanvas_c, mapOptions);
+			// var map_gecode_lat_lang = map_gecode.split(",");
+			// console.log(map_gecode_lat_lang[0]);
+			// var mapOptions = {
+			// 	center: new google.maps.LatLng(map_gecode_lat_lang[0],map_gecode_lat_lang[1]),
+			// 	zoom: 15,
+			// 	// scrollwheel: false,
+			// 	mapTypeId: google.maps.MapTypeId.ROADMAP
+			// }
+			// var map_c = new google.maps.Map(mapCanvas_c, mapOptions);
 
-			// geocodes need to be strings
-			// used parseFloat() to convert them to strings
-			var myLatLng = {lat: parseFloat(map_gecode_lat_lang[0]), lng: parseFloat(map_gecode_lat_lang[1])};
-			var marker = new google.maps.Marker({
-				position: myLatLng,
-				map: map_c,
-				title: 'Hello World!',
-				draggable: true,
-				animation: google.maps.Animation.DROP,
-			});
+			// // geocodes need to be strings
+			// // used parseFloat() to convert them to strings
+			// var myLatLng = {lat: parseFloat(map_gecode_lat_lang[0]), lng: parseFloat(map_gecode_lat_lang[1])};
+			// var marker = new google.maps.Marker({
+			// 	position: myLatLng,
+			// 	map: map_c,
+			// 	title: 'Hello World!',
+			// 	draggable: true,
+			// 	animation: google.maps.Animation.DROP,
+			// });
 
-			marker.addListener('click', toggleBounce);
+			// marker.addListener('click', toggleBounce);
 		}
 
 		function toggleBounce() {

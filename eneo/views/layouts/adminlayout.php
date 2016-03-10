@@ -21,7 +21,8 @@ EneoAsset::register($this);
 <?php $this->beginBody() ?>
 
 <?= $this->render('_eneoheader') ?>
-
+<div id="business-banner-line">
+</div>
 
 <div class="container-fluid">
 	<div class="row">
@@ -29,25 +30,58 @@ EneoAsset::register($this);
 			<div class="row">
 				<ul class="nav-sidebar">
 					<!-- <div>Admin</div> -->
-					<li class="active nav-sidebar-seperator">
+					<?= 
+						Yii::$app->controller->id == 'category' ? 
+						'<li class="nav-sidebar-active nav-sidebar-seperator">':
+						'<li class="nav-sidebar-seperator">';
+					 ?>
+						<span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;&nbsp;
 						<?= Html::a('Categories', ['category/index'], ['class' => '']) ?>
 					</li>
+					
 					<!-- <li class="nav-sidebar-seperator"></li> -->
 					<!-- <div>Users</div> -->
-					<li>
-						<?= Html::a('Profile', ['eneobizinfo/index'], ['class' => '']) ?>
+					<?= 
+						Yii::$app->controller->id == 'eneobizinfo' ? 
+						'<li class="nav-sidebar-active">':
+						'<li class="">';
+					 ?>
+						<span class="glyphicon glyphicon-align-left"></span>&nbsp;&nbsp;&nbsp;
+						<!-- <span class="glyphicon glyphicon-tasks"></span> -->
+						<?= Html::a('Business Profile', ['eneobizinfo/index'], ['class' => '']) ?>
 					</li>
-					<li>
+					<?= 
+						Yii::$app->controller->id == 'advideos' ? 
+						'<li class="nav-sidebar-active">':
+						'<li class="">';
+					 ?>
+						<span class="glyphicon glyphicon-facetime-video"></span>&nbsp;&nbsp;&nbsp;
 						<?= Html::a('Videos', ['advideos/index'], ['class' => '']) ?>
+					</li>
+					<?= 
+						Yii::$app->controller->id == 'videocat' ? 
+						'<li class="nav-sidebar-active">':
+						'<li class="">';
+					 ?>
+						<span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;&nbsp;
+						<?= Html::a('Video Categories', ['videocat/index'], ['class' => '']) ?>
 					</li>
 				</ul>
 			</div>
 		</div>
 
-<?= $content ?>
+		<?= $content ?>
 	<!-- .row -->
 	</div> 
 <!-- .container-fluid -->
+</div>
+
+<div class="row">
+	<!-- Start footer -->
+		<div id="footer">
+			<P>END</P>
+		</div>
+	<!-- End footer -->
 </div>
 
  <?php $this->endBody() ?>

@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 
 $this->title = 'Categories';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="col-md-10">
     <div class="category-index">
@@ -20,11 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
         </div>
 
-        <h1><?= Html::encode($this->title) ?></h1>
+        <h2><?= Html::encode($this->title) ?></h2>
         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
         <p>
-            <?= Html::a('Create Category', ['create'], ['class' => 'btn btn-success']) ?>
+            <?= Html::a('Create Category', ['create'], ['class' => 'btn btn-primary']) ?>
         </p>
 
         <div class="admin-table">

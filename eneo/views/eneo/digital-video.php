@@ -84,7 +84,8 @@
 								<h2 class="business-sidebar-article-title"><?= $biz_vidz['title'] ?></h2>
 								<div class="text-centerk">
 									<!-- <iframe width="730" height="315" src="<?php echo $biz_vidz['url'] ?>" frameborder="0" allowfullscreen></iframe> -->
-									<video width="730" height="315"> <source src="images/uploads/"'.$biz_vid['url'].' type="video/mp4"></video>
+									<iframe width="730" height="315"src="http://www.youtube.com/embed/<?=$biz_vidz['url'];?>"> </iframe>
+									<!-- <video width="730" height="315"> <source src="images/uploads/"'.$biz_vid['url'].' type="video/mp4"></video> -->
 									<!-- <iframe width="730" height="415" src="https://www.youtube.com/embed/Xuav1TPhLQw" frameborder="0" allowfullscreen></iframe> -->
 								</div>
 							</div>

@@ -62,28 +62,49 @@ todo
 3/6/2016
 --------
 1. chnage color to #9a82bc - purple from blue 00bff3
-todo
------
 
-CHange admin to be like front end
-3. make admin content cetntered like google plus
+3/9/2016
+--------
 4. add link from youtube
 5. get images from youtube
 6. add login function
+- eneobizinfo index.php to show only businesses form logegd in user
+todo
+----
+3. make admin content cetntered like google plus
 7. add video links at front end
 
+3/10/2016
+--------
+1. added smoothscroll to category headermenu
+2. 
+todo
+-----
 
 
 
 
 
 
+Useful functions
+https://css-tricks.com/snippets/jquery/smooth-scrolling/
 
+Performs a smooth page scroll to an anchor on the same page.
 
-
-
-
-
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
 
 
 

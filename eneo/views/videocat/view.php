@@ -5,20 +5,21 @@ use yii\widgets\DetailView;
 use yii\widgets\Breadcrumbs;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Advideos */
+/* @var $model app\models\Videocat */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Advideos', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Videocats', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-md-5 col-md-offset-2">
-    <div class="advideos-view">
+    <div class="videocat-view">
 
         <div class="widget-breadcrums">
              <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
         </div>
+
         <h1><?= Html::encode($this->title) ?></h1>
 
         <p>
@@ -36,11 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'model' => $model,
             'attributes' => [
                 'id',
-                'title',
-                'des:ntext',
-                'url:url',
-                'vid_cat_id',
-                'biz_id',
+                'cat_name',
+                'user_id',
             ],
         ]) ?>
 

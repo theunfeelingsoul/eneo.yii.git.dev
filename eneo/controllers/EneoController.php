@@ -12,7 +12,6 @@ use yii\web\Controller;
 class EneoController extends Controller
 {
 
-    
 
     public function actions()
     {
@@ -72,11 +71,14 @@ class EneoController extends Controller
     {
         $this->layout = "eneolayout";
 
+        $biz_vidz = Advideos::find()
+        ->where(['biz_id' => $id])
+        ->all();
         // find by ID
         $biz = Eneobizinfo::find()
         ->where(['id' => $id])
         ->one();
-        return $this->render('listing',['biz'=>$biz]);
+        return $this->render('listing',['biz'=>$biz,'biz_vidz'=>$biz_vidz]);
     }
 
 

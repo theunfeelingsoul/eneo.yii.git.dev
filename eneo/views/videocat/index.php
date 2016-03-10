@@ -4,18 +4,17 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Breadcrumbs;
 
-
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\EneobizinfoSearch */
+/* @var $searchModel app\models\VideocatSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Business Profile';
+$this->title = 'Video Category';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-md-10">
-    <div class="eneobizinfo-index">
+    <div class="videocat-index">
         <div class="widget-breadcrums">
-            <?= Breadcrumbs::widget([
+             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
         </div>
@@ -24,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
         <p>
-            <?= Html::a('Create profile', ['create'], ['class' => 'btn btn-primary']) ?>
+            <?= Html::a('Create a Video Category', ['create'], ['class' => 'btn btn-primary']) ?>
         </p>
 
         <?= GridView::widget([
@@ -34,21 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 ['class' => 'yii\grid\SerialColumn'],
 
                 'id',
-                'tel',
-                'website',
-                'name',
-                // 'des:ntext',
-                // 'highlights',
-                // 'address',
-                [
-                    'attribute' => 'img',
-                    'format' => 'html',
-                    'label' => 'Category List Image',
-                    'value' => function ($data) {
-                        return Html::img('images/uploads/' . $data['cat_list_img_path'],
-                            ['width' => '60px']);
-                    },
-                ],
+                'cat_name',
+                'user_id',
 
                 ['class' => 'yii\grid\ActionColumn'],
             ],

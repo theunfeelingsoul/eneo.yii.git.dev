@@ -14,6 +14,7 @@ use yii\web\UploadedFile;
  * @property string $url
  * @property string $vid_cat_id
  * @property string $biz_id
+ * @property string $user_id
  */
 class Advideos extends \yii\db\ActiveRecord
 {
@@ -28,14 +29,19 @@ class Advideos extends \yii\db\ActiveRecord
         return 'ad_videos';
     }
 
+    public static function trunctateText($text)
+    {
+        return substr($text, 0, 200);;
+    }
+
     // this helps ignore img_path when updating
     // i.e. making it not required
-    public function scenarios()
-    {
-        $scenarios = parent::scenarios();
-        $scenarios['update'] = ['title', 'url', 'vid_cat_id', 'biz_id', 'des'];//Scenario Values Only Accepted
-        return $scenarios;
-    }
+    // public function scenarios()
+    // {
+    //     $scenarios = parent::scenarios();
+    //     $scenarios['update'] = ['title', 'url', 'vid_cat_id', 'biz_id', 'des'];//Scenario Values Only Accepted
+    //     return $scenarios;
+    // }
 
     /**
      * @inheritdoc
@@ -43,8 +49,7 @@ class Advideos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['url'], 'file', 'skipOnEmpty' => false, 'extensions' => 'mp4','on'=>'create'], 
-            [['title', 'des', 'vid_cat_id', 'biz_id'], 'required'],
+            [['title', 'des', 'vid_cat_id', 'biz_id','url','user_id'], 'required'],
             [['des'], 'string'],
             [['title', 'vid_cat_id', 'biz_id'], 'string', 'max' => 255]
         ];
@@ -55,19 +60,19 @@ class Advideos extends \yii\db\ActiveRecord
      * Saves the uploaded image to the a folder
      * If upload is succesful it returns true
      */
-    public function upload($x)
-    {   
-        // only validate two fields
-        // because img_path is is not there 
+    // public function upload($x)
+    // {   
+    //     // only validate two fields
+    //     // because img_path is is not there 
         
-            // upload the image
-            // $this->imageFile->saveAs('images/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
-            $this->imageFile->saveAs('images/uploads/' . $x . '.' . $this->imageFile->extension);
-            return true;
+    //         // upload the image
+    //         // $this->imageFile->saveAs('images/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+    //         $this->imageFile->saveAs('images/uploads/' . $x . '.' . $this->imageFile->extension);
+    //         return true;
         
             
         
-    }
+    // }
 
     /**
      * @inheritdoc
@@ -77,10 +82,11 @@ class Advideos extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
-            'des' => 'Des',
-            'url' => 'Url',
-            'vid_cat_id' => 'Vid Cat ID',
-            'biz_id' => 'Biz ID',
+            'des' => 'Description',
+            'url' => 'Paste Youtube Link here',
+            'vid_cat_id' => 'Video Category',
+            'biz_id' => 'Business Name',
+            'user_id' => 'User ID',
         ];
     }
 }

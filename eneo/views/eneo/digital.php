@@ -112,8 +112,7 @@
 										<div class="row video-list">
 											<div class="video-list-">
 												<div class="col-sm-3">
-													<!-- <a href="clistingplayvideo.php"><img src="images/video1.png"></a> -->
-													<?php echo Html::a('<video width="162" height="91"> <source src="images/uploads/"'.$biz_vid['url'].' type="video/mp4"></video>',['eneo/video','id'=>$biz_vid['biz_id']], ['class' => '']) ?>
+													<?php echo Html::a('<img src="http://img.youtube.com/vi/'.$biz_vid['url'].'/default.jpg">',['eneo/video','id'=>$biz_vid['biz_id']], ['class' => '']) ?>
 												</div>
 												<div class="col-sm-9">
 													<h5 class=""><a href="clistingplayvideo.php"><?= $biz_vid['title'] ?></a></h5>

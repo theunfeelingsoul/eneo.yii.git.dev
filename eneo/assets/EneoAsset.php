@@ -22,7 +22,9 @@ class EneoAsset extends AssetBundle
         'css/font-awesome/css/font-awesome.min.css',
     ];
     public $js = [
-        'https://maps.googleapis.com/maps/api/js',
+        // 'https://maps.googleapis.com/maps/api/js',
+        'https://maps.googleapis.com/maps/api/js?key=AIzaSyAjMBVn_GZdUo1xzvfQwcggnBrXN8bcMas',
+        'js/custom-js.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

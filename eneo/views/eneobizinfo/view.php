@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\widgets\Breadcrumbs;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Eneobizinfo */
@@ -10,9 +11,15 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Eneobizinfos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="col-md-11 col-md-offset-1">
+<div class="col-md-5 col-md-offset-2">
     <div class="eneobizinfo-view">
 
+        <div class="widget-breadcrums">
+             <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+        </div>
+        
         <h1><?= Html::encode($this->title) ?></h1>
 
         <p>

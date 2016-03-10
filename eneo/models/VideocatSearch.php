@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Advideos;
+use app\models\Videocat;
 
 /**
- * AdvideosSearch represents the model behind the search form about `app\models\Advideos`.
+ * VideocatSearch represents the model behind the search form about `app\models\Videocat`.
  */
-class AdvideosSearch extends Advideos
+class VideocatSearch extends Videocat
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class AdvideosSearch extends Advideos
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['title', 'des', 'url', 'vid_cat_id', 'biz_id'], 'safe'],
+            [['id', 'user_id'], 'integer'],
+            [['cat_name'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class AdvideosSearch extends Advideos
      */
     public function search($params)
     {
-        $query = Advideos::find();
+        $query = Videocat::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,14 +57,10 @@ class AdvideosSearch extends Advideos
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => Yii::$app->user->identity->id,
+            'user_id' => $this->user_id,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'des', $this->des])
-            ->andFilterWhere(['like', 'url', $this->url])
-            ->andFilterWhere(['like', 'vid_cat_id', $this->vid_cat_id])
-            ->andFilterWhere(['like', 'biz_id', $this->biz_id]);
+        $query->andFilterWhere(['like', 'cat_name', $this->cat_name]);
 
         return $dataProvider;
     }

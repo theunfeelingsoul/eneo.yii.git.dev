@@ -1,8 +1,10 @@
 <?php 
 use yii\helpers\Html;
+
 // use app\assets\EneoAsset;
 
 // EneoAsset::register($this);
+$x=  Yii::$app->getRequest()->getQueryParam('r');
 ?>
 <!-- Begin header -->
 <!-- Begin humburger -->
@@ -38,21 +40,12 @@ use yii\helpers\Html;
 				      <!-- Collect the nav links, forms, and other content for toggling -->
 				      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 				        <ul class="nav navbar-nav">
-				          <li class="active">
-					          <!-- <a href="#">Home <span class="sr-only">(current)</span></a> -->
-					          <?= Html::a('Home <span class="sr-only">(current)</span>', ['eneo/index'], ['class' => '']) ?>
+				          <?php if (strpos($x, 'eneo') !== false) {echo '<li class="active">'; }else{echo '<li>'; } ?>
+					          <?= Html::a('Home <span class="sr-only">(current)</span>', ['eneo/index'], ['class' => 'nav-link']) ?>
 				          </li>
-				          <li class="dropdown">
-				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse<span class="caret"></span></a>
-				            <ul class="dropdown-menu">
-				              <li>
-				              	<?= Html::a('List Category', ['eneo/categorylist'], ['class' => '']) ?>
-				              </li>
-				              <li role="separator" class="divider"></li>
-				              <li>
-					              <?= Html::a('Media', ['eneo/digital'], ['class' => '']) ?>
-				              </li>
-				            </ul>
+				          <!-- <li class="dropdown"> -->
+				          <?php if (strpos($x, 'category') !== false) {echo '<li class=" desktop active">'; }else{echo '<li class=" desktop">'; } ?>
+				            <a href="#business-categories">Categories</a>
 				          </li>
 				          <li><a href="#">Submit a listing</a></li>
 				        </ul>
@@ -76,9 +69,15 @@ use yii\helpers\Html;
 			<div class="row header-top-inside-left pull-left">
 				<!-- added the .row above and .container-fluid below to remove some wierd padding on the left -->
 				<ul class="container-fluid inside-left">
-					<li class="first-leaf"><a href="">
+					<li class="first-leaf">
+					<!-- <a href="">
 							<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>login
-						</a>
+						</a> -->
+						
+						<?php echo Yii::$app->user->isGuest ?
+							Html::a('<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>login', ['site/login'], ['class' => '']):
+							Html::a('<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>logout('.Yii::$app->user->identity->username.')', ['site/logout'],  ['data-method' => 'post'])
+						?>
 					</li>
 					<li class="last-leaf">
 						<a href="">
@@ -118,22 +117,12 @@ use yii\helpers\Html;
 				      <!-- Collect the nav links, forms, and other content for toggling -->
 				      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				        <ul class="nav navbar-nav">
-				          <li class="active">
-					          <!-- <a href="index.php">Home <span class="sr-only">(current)</span></a> -->
+				          <?php if (strpos($x, 'eneo') !== false) {echo '<li class="active">'; }else{echo '<li>'; } ?>
 					          <?= Html::a('Home <span class="sr-only">(current)</span>', ['eneo/index'], ['class' => '']) ?>
 				          </li>
 
-				          <li class="dropdown desktop">
-				            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Browse <span class="caret"></span></a>
-				            <ul class="dropdown-menu">
-				              <li>
-				              	<?= Html::a('List Category', ['eneo/categorylist'], ['class' => '']) ?>
-				              </li>
-				              <li role="separator" class="divider"></li>
-				              <li>
-								<?= Html::a('Media', ['eneo/digital'], ['class' => '']) ?>
-				              </li>
-				            </ul>
+				          <?php if (strpos($x, 'category') !== false) {echo '<li class=" desktop active">'; }else{echo '<li class=" desktop">'; } ?>
+				            <a href="#business-categories">Categories</a>
 				          </li>
 				          <li><a href="#">Submit a listing</a></li>
 				        </ul>
