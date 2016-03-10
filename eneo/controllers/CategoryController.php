@@ -70,10 +70,10 @@ class CategoryController extends Controller
 
         if ($model->load(Yii::$app->request->post()) ) {
 
-            $x=$model->imageFile = UploadedFile::getInstance($model, 'img_path');
-            $model->img_path = $x;
-            
-            if ($model->upload()) { 
+            $model->imageFile = UploadedFile::getInstance($model, 'img_path');
+            $img_name = mt_rand();
+            $model->img_path = $img_name.'.'.$model->imageFile->extension;
+            if ($model->upload($img_name)) { 
                 // file is uploaded successfully
                 if ($model->save(false)) {
                    return $this->redirect(['view', 'id' => $model->id]);
@@ -112,9 +112,11 @@ class CategoryController extends Controller
             $i=$model->imageFile = UploadedFile::getInstance($model, 'img_path');
             if ($i) {
                 // upload
-                $model->upload();
+                $img_name = mt_rand();
+                $model->upload($img_name);
                 // set the image path
-                $model->img_path = $i;
+                // $model->img_path = $img_name;
+                $model->img_path = $img_name.'.'.$model->imageFile->extension;
             }
 
             // save set to false...still dont knw why, but works like this.

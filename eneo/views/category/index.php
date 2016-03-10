@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'format' => 'html',
                         'label' => 'Category Image',
                         'value' => function ($data) {
-                            return Html::img('images/uploads/' . $data['img_path'],
+                            return Html::img('images/uploads/cat/' . $data['img_path'],
                                 ['width' => '60px']);
                         },
                     ],

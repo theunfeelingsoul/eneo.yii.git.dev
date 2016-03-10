@@ -32,7 +32,7 @@
 						<div class="cat-row-inner">
 							<div class="cat-row-image">
 								<div class="Cat-image">
-									<?php echo Html::a('<img src="images/'.$category['img_path'].'" width="400" height="240">', ['eneo/categorylist','id' => $category['id']], ['class' => '']) ?>
+									<?php echo Html::a('<img src="images/uploads/cat/'.$category['img_path'].'" width="400" height="240">', ['eneo/categorylist','id' => $category['id']], ['class' => '']) ?>
 									
 								</div>
 							</div>

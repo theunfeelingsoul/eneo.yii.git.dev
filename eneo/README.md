@@ -80,6 +80,12 @@ todo
 2. 
 todo
 -----
+1. create 5 categroes with good descriptions and pictures
+2. create two busonesses with good pictures
+3. remove highlights in the listing part
+4. add videos to the businesses 
+5. create the registreation part
+6. in the listing add a cap for the number of images shown i.e 5 images or videos
 
 
 
