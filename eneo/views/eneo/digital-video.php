@@ -25,7 +25,7 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-						
+							<div id="map-gecode"><?=$biz['geocode'];?></div>
 							<div class="field-map" id="map-c">
 								<!-- <div class="field-map"></div> -->
 							</div>

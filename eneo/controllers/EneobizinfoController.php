@@ -70,21 +70,17 @@ class EneobizinfoController extends Controller
         $this->layout = "adminlayout";
 
         $model = new Eneobizinfo(['scenario' => 'create']);
-        // $model = new Eneobizinfo();
-
-        // get data from catergory model
-        // $c = Category::find()->all();
-        $c =array('ccc' => 'dcdc','ccc' => 'dcdc' );
-
 
         // check post request // upload image // save record
         if ($model->load(Yii::$app->request->post()) ) {
 
-
-            $img_name=$model->imageFile = UploadedFile::getInstance($model, 'cat_list_img_path'); // get image
-            $model->cat_list_img_path = $img_name; // add the name to the model
+            $model->imageFile = UploadedFile::getInstance($model, 'cat_list_img_path'); // get image
             
-            if ($model->upload()) { 
+            // get a random number as the image name
+            $img_name = mt_rand();
+            // save it to the variable 
+            $model->cat_list_img_path = $img_name.'.'.$model->imageFile->extension;
+            if ($model->upload($img_name)) { 
                 // file is uploaded successfully
                 if ($model->save(false)) {
                     return $this->redirect(['view', 'id' => $model->id]);
@@ -123,12 +119,18 @@ class EneobizinfoController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             // check of there is any image
-            $image=$model->imageFile = UploadedFile::getInstance($model, 'cat_list_img_path');
-            if ($image) {
+            $i=$model->imageFile = UploadedFile::getInstance($model, 'cat_list_img_path');
+
+            // get a random number as the image name
+            $img_name = mt_rand();
+            // save it to the variable 
+            $model->cat_list_img_path = $img_name.'.'.$model->imageFile->extension;
+
+            if ($i) {
                 // upload
-                $model->upload();
+                $model->upload($img_name);
                 // set the image path
-                $model->cat_list_img_path = $image;
+                $model->cat_list_img_path = $img_name.'.'.$model->imageFile->extension;
             }
 
             // save set to false...still dont knw why, but works like this.

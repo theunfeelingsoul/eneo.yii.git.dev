@@ -64,7 +64,7 @@
 							<div class="field-label ">Photos</div>
 							<div class="container-fluid">
 								<div class="field-items row">
-									<div class="field-item-odd">
+							<!-- 		<div class="field-item-odd">
 										<a href="">
 											<img src="images/food1.jpg">
 										</a>
@@ -83,7 +83,7 @@
 										<a href="">
 											<img src="images/food4.jpg">
 										</a>
-									</div>
+									</div> -->
 									<div class="field-item-odd field-item-view-more">
 										
 										<?= Html::a('View More', ['eneo/digital','id' => $biz['id']], ['class' => '']) ?>
@@ -109,7 +109,9 @@
 										</div>
 									
 								<?php $i++; endforeach; ?>
-									<div class="field-item-odd field-item-view-more">
+									
+									<?php if ($i % 2 == 0) :?> <div class="field-item-even field-item-view-more"><?php else: ?> <div class="field-item-odd field-item-view-more"><?php endif; ?>
+									<!-- <div class="field-item-odd field-item-view-more"> -->
 										<?= Html::a('View More', ['eneo/digital','id' => $biz['id']], ['class' => '']) ?>
 									</div>
 								</div>

@@ -62,7 +62,8 @@ EneoAsset::register($this);
 		 * @return {Number} sum
 		 */
 
-		 function initialize(){
+		 function initialize()
+		 {
 		 	/* step 1. First get all the geocodes from a poulated div called #group-map-geocode */
 			    var i;
 				// get all the geocodes in the database

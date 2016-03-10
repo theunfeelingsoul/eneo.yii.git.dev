@@ -82,13 +82,13 @@ class Eneobizinfo extends \yii\db\ActiveRecord
      * Saves the uploaded image to the a folder
      * If upload is succesful it returns true
      */
-    public function upload()
+    public function upload($img_name)
     {   
         // only validate two fields
         // because img_path is is not there 
         if ($this->validate(array('tel', 'website', 'name', 'highlights', 'address','des','cat_id','user_id'))) {
             // upload the image
-            $this->imageFile->saveAs('images/uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->imageFile->saveAs('images/uploads/cat/' . $img_name . '.' . $this->imageFile->extension);
             return true;
         } else {
             return false;

@@ -73,6 +73,7 @@ class EneoController extends Controller
 
         $biz_vidz = Advideos::find()
         ->where(['biz_id' => $id])
+        ->limit(5)
         ->all();
         // find by ID
         $biz = Eneobizinfo::find()

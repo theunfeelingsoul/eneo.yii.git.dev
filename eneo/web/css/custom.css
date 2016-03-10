@@ -913,7 +913,7 @@ a.btn-primary, #business-detail-review .btn-primary, #cmb {
 	font-size: large;
 	width: 100px;
 	height: 100px;
-	background-color: #17aa1c;
+	background-color: #9a82bc;
 	color: #fff;
 	text-align: center;
 }
@@ -924,7 +924,8 @@ a.btn-primary, #business-detail-review .btn-primary, #cmb {
 }
 
 .field-item-view-more:hover{
-	background-color: rgba(0, 191, 243, 0.78);
+	/*background-color: rgba(0, 191, 243, 0.78);*/
+	cursor: pointer;
 }
 
 .field-item-even{
