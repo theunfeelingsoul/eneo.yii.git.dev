@@ -68,8 +68,18 @@ class BackendusersController extends Controller
 
         $model = new Backendusers();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            // hash password
+            echo $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
+            echo $model->role='normal';
+
+            if ($model->save(false)) {
+                // return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['eneo/index']);
+            }else{
+                // echo "not saved";
+                // return $model->getErrors();
+            }
         } else {
             return $this->render('create', [
                 'model' => $model,

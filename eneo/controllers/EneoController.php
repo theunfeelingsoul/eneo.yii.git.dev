@@ -103,16 +103,16 @@ class EneoController extends Controller
      * @param   (int)       (id)            video id to be shown
      * @return  (mixed)
      */
-    public function actionVideo($id)
+    public function actionVideo($vid_id,$biz_id)
     {
         $this->layout = "eneolayout";
 
         $biz_vidz = Advideos::find()
-        ->where(['biz_id' => $id])
+        ->where(['id' => $vid_id])
         ->one();
 
         $biz = Eneobizinfo::find()
-        ->where(['id' => $id])
+        ->where(['id' => $biz_id])
         ->one();
         return $this->render('digital-video',['biz_vidz' => $biz_vidz,'biz'=>$biz]);
     }

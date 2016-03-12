@@ -40,6 +40,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
 
+            <div>
+                Dont have an account? <?= Html::a('Create one. <span class="sr-only">(current)</span>', ['backendusers/create'], ['class' => 'nav-link']) ?>
+            </div>
+
         <?php ActiveForm::end(); ?>
 
       

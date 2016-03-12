@@ -13,6 +13,7 @@ use Yii;
  * @property string $gender
  * @property string $country
  * @property string $email
+ * @property string $role
  */
 class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
@@ -51,6 +52,7 @@ class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInte
             'country' => 'Country',
             'gender' => 'Gender',
             'email' => 'E-mail',
+            'role' => 'role',
         ];
     }
 

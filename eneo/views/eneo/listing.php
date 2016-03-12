@@ -104,7 +104,7 @@
 											<div class="field-item-odd">
 										<?php endif; ?>
 											<a href="clistingvideo.php">
-												<?php echo Html::a('<img height="100"src="http://img.youtube.com/vi/'.$biz_vid['url'].'/default.jpg">',['eneo/video','id'=>$biz_vid['id']], ['class' => '']) ?>
+												<?php echo Html::a('<img height="100"src="http://img.youtube.com/vi/'.$biz_vid['url'].'/default.jpg">',['eneo/video','vid_id'=>$biz_vid['id'],'biz_id'=>$biz['id']], ['class' => '']) ?>
 											</a>
 										</div>
 									

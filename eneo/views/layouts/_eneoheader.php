@@ -47,7 +47,9 @@ $x=  Yii::$app->getRequest()->getQueryParam('r');
 				          <?php if (strpos($x, 'category') !== false) {echo '<li class=" desktop active">'; }else{echo '<li class=" desktop">'; } ?>
 				            <a href="#business-categories">Categories</a>
 				          </li>
-				          <li><a href="#">Submit a listing</a></li>
+				          <li>
+					          <?= Html::a('Submit a listing <span class="sr-only">(current)</span>', ['eneobizinfo/index'], ['class' => 'nav-link']) ?>
+				          </li>
 				        </ul>
 				      </div><!-- /.navbar-collapse -->
 				    </div><!-- /.container-fluid -->
@@ -80,9 +82,13 @@ $x=  Yii::$app->getRequest()->getQueryParam('r');
 						?>
 					</li>
 					<li class="last-leaf">
-						<a href="">
+						
+						<?php if (Yii::$app->user->isGuest):?>
+							<?php Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Create account', ['backendusers/create'], ['class' => ''])  ?>
+						<?php endif; ?>
+						<!-- <a href="">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Register
-						</a>
+						</a> -->
 					</li>
 				</ul>
 			</div>
@@ -124,7 +130,9 @@ $x=  Yii::$app->getRequest()->getQueryParam('r');
 				          <?php if (strpos($x, 'category') !== false) {echo '<li class=" desktop active">'; }else{echo '<li class=" desktop">'; } ?>
 				            <a href="#business-categories">Categories</a>
 				          </li>
-				          <li><a href="#">Submit a listing</a></li>
+				           <li>
+					          <?= Html::a('Submit a listing <span class="sr-only">(current)</span>', ['eneobizinfo/create'], ['class' => 'nav-link']) ?>
+				          </li>
 				        </ul>
 				      </div><!-- /.navbar-collapse -->
 				    </div><!-- /.container-fluid -->

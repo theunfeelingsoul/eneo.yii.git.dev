@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 /**
  * EneobizinfoController implements the CRUD actions for Eneobizinfo model.
@@ -26,7 +27,27 @@ class EneobizinfoController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update', 'index'],
+                'rules' => [
+                    // [
+                    //     'allow' => true,
+                    //     'actions' => ['index'],
+                    //     'roles' => ['?'],
+                    // ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create', 'update', 'index'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
         ];
+
+        
+
     }
 
     /**
