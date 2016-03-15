@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use app\assets\AdminAsset;
 use app\assets\EneoAsset;
-
+use app\models\Category;
 AdminAsset::register($this);
 EneoAsset::register($this);
 ?>
@@ -31,19 +31,43 @@ EneoAsset::register($this);
 				<div class="row">
 					<ul class="nav-sidebar">
 						<!-- <li><span class="glyphicon glyphicon-dashboard"></span>&nbsp;&nbsp;&nbsp;Sidebar</li> -->
-						<li>Sidebar</li>
+						<li>Menu</li>
+						<!-- if user is admin -->
 						<?php 
 							if (isset(Yii::$app->user->identity->role) && Yii::$app->user->identity->role =='admin' ):
 						 ?>
-						<?= 
-							Yii::$app->controller->id == 'category' ? 
-							'<li class="nav-sidebar-active nav-sidebar-seperator">':
-							'<li class="nav-sidebar-seperator">';
-						 ?>
-							<span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;&nbsp;
-							<?= Html::a('Categories', ['category/index'], ['class' => '']) ?>
-						</li>
-					<?php endif; ?>
+							<?= 
+								Yii::$app->controller->id == 'category' ? 
+								'<li class="nav-sidebar-active">':
+								'<li class="">';
+							 ?>
+								<span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;&nbsp;
+								<?= Html::a('Categories', ['category/index'], ['class' => '']) ?>
+							</li>
+							<?= 
+								Yii::$app->controller->id == 'backendusers' ? 
+								'<li class="nav-sidebar-active">':
+								'<li class="">';
+							 ?>
+								<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;
+								<?= Html::a('Users', ['backendusers/index'], ['class' => '']) ?>
+							</li>
+							<?= 
+								Yii::$app->controller->id == 'surveyques' ? 
+								'<li class="nav-sidebar-active">':
+								'<li class="">';
+							 ?>
+								<span class="glyphicon glyphicon-align-justify"></span>&nbsp;&nbsp;&nbsp;
+								<?= Html::a('Survey Index', ['surveyques/index'], ['class' => '']) ?>
+							</li>
+
+							<li class="nav-sidebar-seperator">
+								<span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;&nbsp;
+								<?= Html::a('Survey', ['surveyques/survey'], ['class' => '']) ?>
+							</li>
+						<?php endif; ?>
+						<!-- /if user is admin -->
+
 						
 						<!-- <li class="nav-sidebar-seperator"></li> -->
 						<!-- <div>Users</div> -->
@@ -82,13 +106,31 @@ EneoAsset::register($this);
 <!-- .container-fluid -->
 </div>
 
-<div class="row">
 	<!-- Start footer -->
-		<div id="footer">
-			<P>END</P>
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<h3 class="footer-col-title">CATEGORIES</h3>
+					<div class="footer-col-list">
+						<?php $c = Category::find()->all(); ?>
+						<?php foreach($c as $v): ?>
+							<div>
+							<?php echo Html::a($v['title'], ['eneo/categorylist','id' => $v['id']], ['class' => '']) ?>
+							</div>
+						<?php endforeach; ?>
+					<!-- </ul> -->
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<h3 class="footer-col-title">ABOUT US</h3>
+					<p>We aim to create good relationsips using digital media between you and many possible partners. </p>
+				</div>
+			</div>
 		</div>
+	</div>
 	<!-- End footer -->
-</div>
 
  <?php $this->endBody() ?>
 

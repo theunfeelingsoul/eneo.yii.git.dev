@@ -33,7 +33,7 @@ $x=  Yii::$app->getRequest()->getQueryParam('r');
 					    <div class="col-md-3">
 							<div id="logo">
 								<a href="">
-									<img src="images/logo.png" title="Home" alt="Home">
+									<img src="<?=Yii::$app->getUrlManager()->getBaseUrl() ?>/images/logo.png" title="Home" alt="Home">
 								</a>
 							</div>
 						</div>
@@ -49,6 +49,9 @@ $x=  Yii::$app->getRequest()->getQueryParam('r');
 				          </li>
 				          <li>
 					          <?= Html::a('Submit a listing <span class="sr-only">(current)</span>', ['eneobizinfo/index'], ['class' => 'nav-link']) ?>
+				          </li>
+				          <li>
+					          <?= Html::a('Survey <span class="sr-only">(current)</span>', ['surveyques/survey'], ['class' => 'nav-link']) ?>
 				          </li>
 				        </ul>
 				      </div><!-- /.navbar-collapse -->
@@ -83,8 +86,8 @@ $x=  Yii::$app->getRequest()->getQueryParam('r');
 					</li>
 					<li class="last-leaf">
 						
-						<?php if (Yii::$app->user->isGuest):?>
-							<?php Html::a('<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Create account', ['backendusers/create'], ['class' => ''])  ?>
+						<?php if (!Yii::$app->user->isGuest):?>
+							<?=Html::a('<span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>Dashboard', ['eneobizinfo/index'], ['class' => ''])  ?>
 						<?php endif; ?>
 						<!-- <a href="">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Register
@@ -95,8 +98,8 @@ $x=  Yii::$app->getRequest()->getQueryParam('r');
 			<div class="header-top-inside-left pull-right">
 				<ul class="inside-right">
 					<li> <a href="">Join us</a></li>
-					<li><a href=""><i class="fa fa-facebook"></i></a></li>
-					<li class="last-leaf"><a href=""><i class="fa fa-twitter"></i></a></li>
+					<li><a href="https://www.facebook.com/EneoSearch/?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a></li>
+					<li class="last-leaf"><a href="https://twitter.com/eneosearch" target="_blank"><i class="fa fa-twitter"></i></a></li>
 				</ul>
 			</div>
 		</div>
@@ -113,7 +116,7 @@ $x=  Yii::$app->getRequest()->getQueryParam('r');
 				<div class="col-md-3">
 					<div id="logo">
 						<a href="">
-							<img src="images/logo.png" title="Home" alt="Home">
+							<img src="<?=Yii::$app->getUrlManager()->getBaseUrl() ?>/images/logo.png" title="Home" alt="Home">
 						</a>
 					</div>
 				</div>
@@ -132,6 +135,9 @@ $x=  Yii::$app->getRequest()->getQueryParam('r');
 				          </li>
 				           <li>
 					          <?= Html::a('Submit a listing <span class="sr-only">(current)</span>', ['eneobizinfo/create'], ['class' => 'nav-link']) ?>
+				          </li>
+				           <li>
+					          <?= Html::a('Survey <span class="sr-only">(current)</span>', ['surveyques/survey'], ['class' => 'nav-link']) ?>
 				          </li>
 				        </ul>
 				      </div><!-- /.navbar-collapse -->

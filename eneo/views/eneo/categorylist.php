@@ -39,7 +39,7 @@
 										<div class="cat-row-inner">
 											<div class="cat-row-image">
 												<div class="Cat-image">
-													<?php echo Html::a('<img src="images/uploads/cat/'.$catlist['cat_list_img_path'].'" width="400" height="240">', ['eneo/listing','id' => $catlist['id']], ['class' => '']) ?>
+													<?php echo Html::a('<img src="'.Yii::$app->getUrlManager()->getBaseUrl().'/images/uploads/cat/'.$catlist['cat_list_img_path'].'" width="400" height="240">', ['eneo/listing','id' => $catlist['id']], ['class' => '']) ?>
 												</div>
 											</div>
 											<div class="views-field views-field-title">

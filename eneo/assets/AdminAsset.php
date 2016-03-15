@@ -19,6 +19,7 @@ class AdminAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/custom-admin.css',
+        'css/custom.css',
         'css/font-awesome/css/font-awesome.min.css',
     ];
     public $js = [

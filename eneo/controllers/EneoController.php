@@ -42,7 +42,7 @@ class EneoController extends Controller
         $g='';
         foreach ($geocodes as $key => $geocode) {
             if (!empty($geocode['geocode'])) {
-                $g.=$geocode['geocode'].','.$geocode['cat_id'].'#';
+                $g.=$geocode['geocode'].','.$geocode['cat_id'].','.$geocode['name'].','.$geocode['cat_list_img_path'].'#';
             }
             
         }

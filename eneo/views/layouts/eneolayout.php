@@ -1,6 +1,7 @@
 <?php 
 use yii\helpers\Html;
 use app\assets\EneoAsset;
+use app\models\Category;
 
 EneoAsset::register($this);
 ?>
@@ -34,7 +35,27 @@ EneoAsset::register($this);
 
 	<!-- Start footer -->
 	<div id="footer">
-		<P>END</P>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-2">
+					<h3 class="footer-col-title">CATEGORIES</h3>
+					<div class="footer-col-list">
+						<?php $c = Category::find()->all(); ?>
+						<?php foreach($c as $v): ?>
+							<div>
+							<?php echo Html::a($v['title'], ['eneo/categorylist','id' => $v['id']], ['class' => '']) ?>
+							</div>
+						<?php endforeach; ?>
+					<!-- </ul> -->
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<h3 class="footer-col-title">ABOUT US</h3>
+					<p>We aim to create good relationsips using digital media between you and many possible partners. </p>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- End footer -->
 
@@ -105,9 +126,10 @@ EneoAsset::register($this);
 			        icon: 'images/maps/cat/'+locations[i][2]+'.png'
 			      });
 
+			      // thsi is the speechbox that appears when you click the marker
 			      google.maps.event.addListener(marker, 'click', (function(marker, i) {
 			        return function() {
-			          infowindow.setContent(locations[i][0]);
+			          infowindow.setContent(locations[i][3]+'<br/><img width ="100"src="images/uploads/cat/'+locations[i][4]+'">');
 			          infowindow.open(map, marker);
 			        }
 			      })(marker, i));

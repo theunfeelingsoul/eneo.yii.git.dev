@@ -33,8 +33,8 @@ class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInte
     public function rules()
     {
         return [
-            [['username', 'password', 'country', 'email','captcha','password_repeat'], 'required'],
-            [['username', 'password', 'country', 'email','gender'], 'string', 'max' => 50],
+            [['username', 'password', 'country', 'email','captcha','password_repeat','role'], 'required','on'=>'create'],
+            [['username', 'password', 'country', 'email','gender','role'], 'string', 'max' => 50],
             ['captcha', 'captcha'],
             ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match" ],
         ];
@@ -108,7 +108,15 @@ class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInte
         return self::findOne(['username'=>$username]);
     }
 
-    public function validatePassword($password){
-        return $this->password ===$password;
+    public function validatePassword($password,$hash){
+        // return $this->password ===$password;
+        // check the hased password to the provided password
+        if (Yii::$app->getSecurity()->validatePassword($password, $hash)) {
+            // all good, logging user in
+            return true;
+        } else {
+            // wrong password
+            return false;
+        }
     }
 } // end class

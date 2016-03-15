@@ -43,8 +43,9 @@ class LoginForm extends Model
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-
-            if (!$user || !$user->validatePassword($this->password)) {
+            // got the hashed password from the above user object 
+            // the validatePassword mothod is in the backend users model
+            if (!$user || !$user->validatePassword($this->password,$user->pass_hash)) {
                 $this->addError($attribute, 'Incorrect username or password.');
             }
         }

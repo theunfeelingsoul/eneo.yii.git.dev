@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Backendusers;
+use app\models\LoginForm;
 use app\models\BackendusersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -67,13 +68,16 @@ class BackendusersController extends Controller
         $this->layout = "adminlayout";
 
         $model = new Backendusers();
+        $LoginFormModel = new LoginForm();
 
         if ($model->load(Yii::$app->request->post())) {
-            // hash password
-            echo $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
+            // create a hash
+            echo $model->pass_hash = Yii::$app->getSecurity()->generatePasswordHash($model->password);
             echo $model->role='normal';
 
             if ($model->save(false)) {
+                // log in user the redirect
+                Yii::$app->user->login($model);
                 // return $this->redirect(['view', 'id' => $model->id]);
                 return $this->redirect(['eneo/index']);
             }else{
@@ -99,7 +103,7 @@ class BackendusersController extends Controller
         
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

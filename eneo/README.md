@@ -87,7 +87,23 @@ todo
 5. create the registreation part
 6. in the listing add a cap for the number of images shown i.e 5 images or videos
 
+3/12/2016
+---------
+- create the footer
+todo
+----
+- make a seperate layout for super user i.e categories
+-- the super admin can make users super admin bu upodating backendusers
+- fix the serach on home page
 
+- on map, display video or image when maker is clicked
+- locations - find out from other websites
+- figure out the panorama pics
+- fix the business cover page
+- fix the similar business sidebar
+- make the pictures page or remove it for now
+- see if you can make maps a different color e.g purple
+- add the to the top arrow
 
 
 

@@ -29,8 +29,7 @@ use app\models\EneoBizinfo;
         ); ?>
 
         <?= $form->field($model, 'biz_id')->dropDownList(
-            ArrayHelper::map(EneoBizinfo::find() ->where(['user_id' => Yii::$app->user->identity->id])->all(),'id','name'),
-            ['prompt'=>'Select Buisness ID']
+            ArrayHelper::map(EneoBizinfo::find()->where(['user_id'=>Yii::$app->user->identity->id])->all(),'id','name'),['prompt'=>'Select']
         ); ?>
 
         <?= $form->field($model, 'user_id')->hiddenInput(['value'=> Yii::$app->user->identity->id])->label(false); ?>

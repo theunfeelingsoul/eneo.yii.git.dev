@@ -167,7 +167,7 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<div id="business-sidebar-article"> 
+					<!-- <div id="business-sidebar-article"> 
 						<h2 class="business-sidebar-article-title">Similar Business</h2>
 						<div class="sidebar-content">
 							<div class="sidebar-row">
@@ -226,7 +226,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
