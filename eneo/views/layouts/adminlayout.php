@@ -45,6 +45,14 @@ EneoAsset::register($this);
 								<?= Html::a('Categories', ['category/index'], ['class' => '']) ?>
 							</li>
 							<?= 
+								Yii::$app->controller->id == 'surveyans' ? 
+								'<li class="nav-sidebar-active">':
+								'<li class="">';
+							 ?>
+								<span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;&nbsp;
+								<?= Html::a('Survey Ans', ['surveyans/index'], ['class' => '']) ?>
+							</li>
+							<?= 
 								Yii::$app->controller->id == 'backendusers' ? 
 								'<li class="nav-sidebar-active">':
 								'<li class="">';
@@ -88,14 +96,14 @@ EneoAsset::register($this);
 							<span class="glyphicon glyphicon-facetime-video"></span>&nbsp;&nbsp;&nbsp;
 							<?= Html::a('Videos', ['advideos/index'], ['class' => '']) ?>
 						</li>
-						<?= 
+					<!-- 	
 							Yii::$app->controller->id == 'videocat' ? 
 							'<li class="nav-sidebar-active">':
 							'<li class="">';
 						 ?>
 							<span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;&nbsp;
-							<?= Html::a('Video Categories', ['videocat/index'], ['class' => '']) ?>
-						</li>
+							 Html::a('Video Categories', ['videocat/index'], ['class' => '']) 
+						</li> -->
 					</ul>
 				</div>
 			</div>

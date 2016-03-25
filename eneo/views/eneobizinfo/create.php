@@ -7,7 +7,7 @@ use yii\widgets\Breadcrumbs;
 /* @var $this yii\web\View */
 /* @var $model app\models\Eneobizinfo */
 
-$this->title = 'Create Eneobizinfo';
+$this->title = 'Create Business Profile';
 $this->params['breadcrumbs'][] = ['label' => 'Eneobizinfos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

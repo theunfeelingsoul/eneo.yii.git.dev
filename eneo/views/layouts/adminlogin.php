@@ -1,10 +1,10 @@
 <?php 
 use yii\helpers\Html;
 use app\assets\AdminAsset;
-use app\assets\EneoAsset;
+// use app\assets\EneoAsset;
 
 AdminAsset::register($this);
-EneoAsset::register($this);
+// EneoAsset::register($this);
 ?>
 
 <?php $this->beginPage() ?>

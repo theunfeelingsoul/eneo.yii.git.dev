@@ -77,7 +77,12 @@ class SurveyquesController extends Controller
         if ($request->post()) {
             // get the post data
             $post = $request->post(); 
+            unset($post['_csrf']);
+            // echo "<pre>";
+            // print_r($post);
+            // echo "</pre>";
 
+            // exit();
             // use a loop to save teh form data
             foreach ($post as $key => $value) {
                 // instatiate the model at the begining of the loop

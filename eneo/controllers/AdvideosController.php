@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\filters\AccessControl;
 
 /**
  * AdvideosController implements the CRUD actions for Advideos model.
@@ -17,11 +18,28 @@ class AdvideosController extends Controller
 {
     public function behaviors()
     {
-        return [
+        return [    
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
+                ],
+            ],
+
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update', 'index'],
+                'rules' => [
+                    // [
+                    //     'allow' => true,
+                    //     'actions' => ['index'],
+                    //     'roles' => ['?'],
+                    // ],
+                    [
+                        'allow' => true,
+                        'actions' => ['create', 'update', 'index'],
+                        'roles' => ['@'],
+                    ],
                 ],
             ],
         ];
@@ -70,7 +88,7 @@ class AdvideosController extends Controller
         $model = new Advideos();
 
         //to do check if id is ok
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -130,7 +148,7 @@ class AdvideosController extends Controller
         
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

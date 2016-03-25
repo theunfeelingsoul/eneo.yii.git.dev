@@ -5,6 +5,9 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 
+   error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+
 /**
  * LoginForm is the model behind the login form.
  */
@@ -60,11 +63,12 @@ class LoginForm extends Model
         // echo $identity = User::findOne(['username' => $this->username]);
 
         // exit();
-
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+        }else{
+            return false;
         }
-        return false;
+        
     }
 
     /**

@@ -9,6 +9,7 @@ use app\models\BackendusersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * BackendusersController implements the CRUD actions for Backendusers model.
@@ -24,6 +25,24 @@ class BackendusersController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update', 'index'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index','create'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['update', 'index'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+
         ];
     }
 
@@ -72,8 +91,8 @@ class BackendusersController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             // create a hash
-            echo $model->pass_hash = Yii::$app->getSecurity()->generatePasswordHash($model->password);
-            echo $model->role='normal';
+            $model->pass_hash = Yii::$app->getSecurity()->generatePasswordHash($model->password);
+            $model->role='normal';
 
             if ($model->save(false)) {
                 // log in user the redirect
@@ -81,8 +100,8 @@ class BackendusersController extends Controller
                 // return $this->redirect(['view', 'id' => $model->id]);
                 return $this->redirect(['eneo/index']);
             }else{
-                // echo "not saved";
-                // return $model->getErrors();
+                echo "not saved";
+                return $model->getErrors();
             }
         } else {
             return $this->render('create', [

@@ -49,6 +49,7 @@ body{
     /*position: fixed;*/
     /*float: left;*/
     /*top: 32px;*/
+    min-height: 80vh;
     bottom: 0;
     left: 0;
     z-index: 1000;
@@ -107,5 +108,8 @@ body{
 	padding-top: 20px;
 }
 
+form{
+	margin-bottom: 100px;
+}
 
 

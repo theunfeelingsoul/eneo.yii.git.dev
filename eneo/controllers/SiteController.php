@@ -55,16 +55,19 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+        error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+
         $this->layout = "adminlogin";
 
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             // return $this->goBack();
             return $this->redirect(['eneobizinfo/index']);
+
         }
         return $this->render('login', [
             'model' => $model,

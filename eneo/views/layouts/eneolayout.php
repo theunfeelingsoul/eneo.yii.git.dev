@@ -2,6 +2,8 @@
 use yii\helpers\Html;
 use app\assets\EneoAsset;
 use app\models\Category;
+use yii\helpers\Url;
+
 
 EneoAsset::register($this);
 ?>
@@ -18,7 +20,9 @@ EneoAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-	
+
+	<!-- base url. Do not remove. Used by maps javascript -->
+	<div id="base-url"><?php echo Url::base(); ?></div>
 	<?= $this->render('_eneoheader') ?>
 
 	<!-- <div class="col-md-3 visible-xs">
@@ -95,6 +99,10 @@ EneoAsset::register($this);
 				// get the content of the div
 				var map_gecode = map_gecode.innerHTML;
 
+				// base url for the application
+				var base_url = document.getElementById('base-url');
+				var base_url = base_url.innerHTML;
+
 				// split the gecodes string and add convert them to arrays
 				var locations = map_gecode.split("#");
 				// var arr2 = [];
@@ -111,25 +119,23 @@ EneoAsset::register($this);
 			    });
 
 			    var infowindow = new google.maps.InfoWindow();
-
 			    var marker, i;
 			    var image = 'images/marker-icon.png';
 			    for (i = 0; i < locations.length; i++) {  
 			    	var x = parseInt(locations[i][2]);
-						// console.log(x);
 
 			      marker = new google.maps.Marker({
 			        position: new google.maps.LatLng(locations[i][0], locations[i][1]),
 			        map: map,
 			        // icon: image
 			        	// icon: 'images/maps/cat/5.png',
-			        icon: 'images/maps/cat/'+locations[i][2]+'.png'
+			        icon: base_url+'/images/maps/cat/'+locations[i][2]+'.png'
 			      });
 
 			      // thsi is the speechbox that appears when you click the marker
 			      google.maps.event.addListener(marker, 'click', (function(marker, i) {
 			        return function() {
-			          infowindow.setContent(locations[i][3]+'<br/><img width ="100"src="images/uploads/cat/'+locations[i][4]+'">');
+			          infowindow.setContent(locations[i][3]+'<br/><img width ="100"src="'+base_url+'/images/uploads/cat/'+locations[i][4]+'">');
 			          infowindow.open(map, marker);
 			        }
 			      })(marker, i));
@@ -189,6 +195,8 @@ EneoAsset::register($this);
 
 				var map_gecode = document.getElementById('map-gecode');
 				var map_gecode = map_gecode.innerHTML;
+
+
 				// console.log(map_gecode);
 				
 				var map_gecode_lat_lang = map_gecode.split(",");
@@ -228,6 +236,7 @@ EneoAsset::register($this);
 		
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
+		
 </body>
 </html>
  <?php $this->endPage() ?>

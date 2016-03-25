@@ -56,11 +56,18 @@ class EneobizinfoSearch extends Eneobizinfo
             // $query->where('0=1');
             return $dataProvider;
         }
-
-        $query->andFilterWhere([
-            'id' => $this->id,
-            'user_id' => Yii::$app->user->identity->id,
-        ]);
+        
+        if (Yii::$app->user->identity->role=='admin') {
+            $query->andFilterWhere([
+                'id' => $this->id,
+            ]);
+        }else{
+            $query->andFilterWhere([
+                'id' => $this->id,
+                'user_id' => Yii::$app->user->identity->id,
+            ]);
+        }
+        
 
         $query->andFilterWhere(['like', 'tel', $this->tel])
             ->andFilterWhere(['like', 'website', $this->website])

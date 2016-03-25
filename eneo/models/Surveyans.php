@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "survey_ans".
  *
  * @property integer $id
- * @property integer $q_id
+ * @property string $q_id
  * @property string $ans
  * @property string $user_id
  */
@@ -29,8 +29,7 @@ class Surveyans extends \yii\db\ActiveRecord
     {
         return [
             [['q_id', 'ans', 'user_id'], 'required'],
-            [['q_id'], 'integer'],
-            [['ans'], 'string'],
+            [['ans','q_id'], 'string'],
             [['user_id'], 'string', 'max' => 100]
         ];
     }

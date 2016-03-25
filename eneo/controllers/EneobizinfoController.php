@@ -6,6 +6,7 @@ use Yii;
 use app\models\Eneobizinfo;
 use app\models\EneobizinfoSearch;
 use app\models\Category;
+use app\models\LoginForm;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -44,10 +45,32 @@ class EneobizinfoController extends Controller
                     ],
                 ],
             ],
+
+            
         ];
 
         
 
+    }
+
+     public function actionLogin()
+    {
+        
+
+        $this->layout = "adminlogin";
+
+        // if (!\Yii::$app->user->isGuest) {
+        //     return $this->goHome();
+        // }
+        $model = new LoginForm();
+        // if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        //     // return $this->goBack();
+        //     return $this->redirect(['eneobizinfo/index']);
+
+        // }
+        return $this->render('../site/login', [
+            'model' => $model,
+        ]);
     }
 
     /**

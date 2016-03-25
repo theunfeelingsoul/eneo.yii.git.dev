@@ -49,7 +49,7 @@ class Advideos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'des', 'vid_cat_id', 'biz_id','url','user_id'], 'required'],
+            [['title', 'des','biz_id','url','user_id'], 'required'],
             [['des'], 'string'],
             [['title', 'vid_cat_id', 'biz_id'], 'string', 'max' => 255]
         ];

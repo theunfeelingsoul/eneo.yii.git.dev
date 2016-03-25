@@ -1,3 +1,4 @@
+<?= $this->render('analyticstracking'); ?>
 <?= $this->render('_searchbar'); ?>
 <?php use yii\helpers\Html; ?>
 <!-- Begin #geo-loc-map -->

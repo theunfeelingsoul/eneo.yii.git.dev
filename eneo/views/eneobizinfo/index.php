@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
 
-                'id',
+                // 'id',
                 'tel',
                 'website',
                 'name',
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'format' => 'html',
                     'label' => 'Category List Image',
                     'value' => function ($data) {
-                        return Html::img('images/uploads/' . $data['cat_list_img_path'],
+                        return Html::img(Yii::$app->getUrlManager()->getBaseUrl().'/images/uploads/cat/' . $data['cat_list_img_path'],
                             ['width' => '60px']);
                     },
                 ],

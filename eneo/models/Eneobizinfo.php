@@ -56,14 +56,14 @@ class Eneobizinfo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'tel' => 'Tel',
+            'tel' => 'Phone',
             'website' => 'Website',
-            'name' => 'Name',
-            'des' => 'Des',
+            'name' => 'Business Name',
+            'des' => 'Business Description',
             'highlights' => 'Highlights',
             'address' => 'Address',
             'cat_list_img_path' => 'Category List Image',
-            'cat_id' => 'Category',
+            'cat_id' => 'Business Category',
             'geocode' => 'Geocode',
             'user_id' => 'user_id',
         ];

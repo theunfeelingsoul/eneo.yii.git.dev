@@ -1,3 +1,4 @@
+<?= $this->render('analyticstracking'); ?>
 <?php use yii\helpers\Html; ?>
 <div class="container-fluid">
 	<div class="row">

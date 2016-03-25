@@ -57,7 +57,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-					<div class="business-detail-article">
+					<!-- <div class="business-detail-article">
 						<div class="side-item">
 							<div>Business Topics</div>
 							<ul class="side-item-list">
@@ -75,7 +75,7 @@
 								<li><a href="">Word<span class="info-text">(1)</span></a></li>
 							</ul>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<div class="col-md-8">
 					<div class="business-detail-article">
@@ -90,21 +90,12 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-5">
+								<div class="col-md-10">
+									<h4>Video details</h4>
+									<hr>
+									<p><?= $biz_vidz['des'] ?></p>
 									<!-- Nav tabs -->
-									<ul class="nav nav-tabs" role="tablist">
-										<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Video Details</a></li>
-										<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Transcipt</a></li>
-									</ul>
-
-									<!-- Tab panes -->
-									<div class="tab-content">
-										<div role="tabpanel" class="tab-pane active" id="home">
-											<h5></h5>
-											<?= $biz_vidz['des'] ?>
-										</div>
-										<div role="tabpanel" class="tab-pane" id="profile">...</div>
-									</div>
+									
 								</div>
 							</div>
 						</div>

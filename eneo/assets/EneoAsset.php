@@ -19,7 +19,7 @@ class EneoAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/custom.css',
-        // 'css/font-awesome/css/font-awesome.min.css',
+        'css/font-awesome/css/font-awesome.min.css',
     ];
     public $js = [
         // 'https://maps.googleapis.com/maps/api/js',

@@ -1,11 +1,13 @@
 <?php
-
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\LoginForm */
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
