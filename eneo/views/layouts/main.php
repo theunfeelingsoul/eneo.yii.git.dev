@@ -27,8 +27,8 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandLabel' => 'Victor Njoroge Ngugi',
+        'brandUrl' => ['/webq/survey'],
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -36,16 +36,15 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/site/login']] :
-                [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ],
+            ['label' => 'Questions', 'url' => ['/webq/survey']],
+            ['label' => 'Update Answers', 'url' => ['/webans/index']],
+            // Yii::$app->user->isGuest ?
+            //     ['label' => 'Login', 'url' => ['/site/login']] :
+            //     [
+            //         'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+            //         'url' => ['/site/logout'],
+            //         'linkOptions' => ['data-method' => 'post']
+            //     ],
         ],
     ]);
     NavBar::end();
@@ -53,6 +52,10 @@ AppAsset::register($this);
 
     <div class="container">
         <?= Breadcrumbs::widget([
+            'homeLink' => [ 
+                      'label' => Yii::t('yii', 'questions'),
+                      'url' => ['/webq/survey'],
+                 ],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= $content ?>
@@ -61,13 +64,21 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Victor Njoroge <?= date('Y') ?> 
+        <a target="_blank" href="https://www.facebook.com/theunfeelingsoul"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+        <a target="_blank" href="https://twitter.com/unfeelingsoul"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a target="_blank" href="https://plus.google.com/u/2/110762474978617684531"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>
+        <a target="_blank" href="https://www.linkedin.com/in/victor-njoroge-96205444"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+        </p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <!-- <p class="pull-right"><?= Yii::powered() ?></p> -->
     </div>
 </footer>
 
 <?php $this->endBody() ?>
+<script type="text/javascript">
+    // $('.breadcrumb').affix()
+</script>
 </body>
 </html>
 <?php $this->endPage() ?>

@@ -1154,3 +1154,40 @@ h2.business-sidebar-article-title {
 /***************************************************************/
 /********************* END ADMIN THANKYOU ********************/
 /***************************************************************/
+
+
+/*business comment*/
+
+.biz-comment-profile-img img{
+	width: 50px;
+}
+
+#biz-comment-box{
+	background-color: #fff;
+	display: table;
+	margin-top: 10px;
+	padding: 25px;
+	background-color: #f9f9f9;
+}
+
+.biz-comments{
+	border-bottom: solid 1px #F8F8F8;
+	display: table;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+	background-color: #f9f9f9;
+}
+
+.biz-comments-user{
+	margin-top: 10px;
+}
+.biz-comment-container{
+	max-height:400px;
+	/*overflow: scroll;*/
+	overflow-y:auto; 
+	overflow-x:auto; 
+}
+
+.biz-comments-form{
+	margin-top: 10px;
+}

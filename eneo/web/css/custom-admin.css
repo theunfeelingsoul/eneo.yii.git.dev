@@ -82,6 +82,9 @@ body{
 		background-color: #FDF8FF;
 }
 
+.nav-sidebar-second-item{
+	padding-left: 40px!important;
+}
 
 .nav-sidebar li{
 	list-style: none;

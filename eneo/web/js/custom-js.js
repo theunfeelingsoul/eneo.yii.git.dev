@@ -18,4 +18,20 @@ $( document ).ready(function() {
       }
     }
   });
+
+    // scroll to the comment div on load
+    // this is to help ease the pain of scrolling all the time
+    // this for all the pages with this class
+    $('html, body').animate({
+        scrollTop: $('.business-detail-review-comment').offset().top
+    }, 'slow');
 });
+
+
+
+// $(document).ready(function () {
+//     // Handler for .ready() called.
+//     $('html, body').animate({
+//         scrollTop: $('#what').offset().top
+//     }, 'slow');
+// });

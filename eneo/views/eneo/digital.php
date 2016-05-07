@@ -61,21 +61,10 @@
 				<div class="col-md-4">
 					<div class="business-detail-article">
 						<div class="side-item">
-							<div>Business Topics</div>
-							<ul class="side-item-list">
-								<li><a href="">Business Skills<span class="info-text">(5)</span></a></li>
-								<li><a href="">Productivity<span class="info-text">(9)</span></a></li>
-								<li><a href="">Operating Systems<span class="info-text">(4)</span></a></li>
-							</ul>
-						</div>
-
-						<div class="side-item">
-							<div>Business Software</div>
-							<ul class="side-item-list">
-								<li><a href="">Microsoft<span class="info-text">(5)</span></a></li>
-								<li><a href="">Office<span class="info-text">(6)</span></a></li>
-								<li><a href="">Word<span class="info-text">(1)</span></a></li>
-							</ul>
+							<?= $this->render('_video_sidebar_playlist', [
+						        'biz_vidz_cats'=>$biz_vidz_cats,
+						        'biz_id'=>$biz_id,
+						    ]) ?>
 						</div>
 					</div>
 				</div>
@@ -85,7 +74,7 @@
 							<div class="row">
 								<div class="video-list-head">
 									<div class="video-list-head-details">
-										98 Videos
+										<?=$biz_vidz_count?>
 									</div>
 									<div class="video-list-head-options">
 										<form class="form-inline">
@@ -113,7 +102,11 @@
 										<div class="row video-list">
 											<div class="video-list-">
 												<div class="col-sm-3">
-													<?php echo Html::a('<img src="http://img.youtube.com/vi/'.$biz_vid['url'].'/default.jpg">',['eneo/video','id'=>$biz_vid['biz_id']], ['class' => '']) ?>
+													<?php echo Html::a('<img src="http://img.youtube.com/vi/'.$biz_vid['url'].'/default.jpg">',
+													[
+														'eneo/video','biz_id'=>$biz_vid['biz_id'],'vid_id'=>$biz_vid['id']
+													], 
+													['class' => '']) ?>
 												</div>
 												<div class="col-sm-9">
 													<h5 class=""><a href="clistingplayvideo.php"><?= $biz_vid['title'] ?></a></h5>
@@ -168,3 +161,5 @@
 		</div>
 	</div>
 </div>
+
+

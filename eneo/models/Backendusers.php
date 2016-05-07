@@ -14,11 +14,14 @@ use Yii;
  * @property string $country
  * @property string $email
  * @property string $role
+ * @property string $img_path
  */
 class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     public $captcha;
     public $password_repeat;
+    // will be used to store the image data
+    public $imageFile;
     /**
      * @inheritdoc
      */
@@ -34,6 +37,7 @@ class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInte
     {
         return [
             [['username', 'password', 'country', 'email','captcha','password_repeat','role'], 'required','on'=>'create'],
+            [['img_path'], 'string'],
             [['username', 'password', 'country', 'email','gender','role'], 'string', 'max' => 50],
             ['captcha', 'captcha'],
             ['password_repeat', 'compare', 'compareAttribute'=>'password', 'message'=>"Passwords don't match" ],
@@ -53,7 +57,27 @@ class Backendusers extends \yii\db\ActiveRecord implements \yii\web\IdentityInte
             'gender' => 'Gender',
             'email' => 'E-mail',
             'role' => 'role',
+            'img_path' => 'Image Path',
         ];
+    }
+
+    /**
+     * Saves the uploaded image to the a folder
+     * If upload is succesful it returns true
+     */
+    public function upload($img_name)
+    {   
+        // only validate two fields
+        // because img_path is is not there 
+        if ($this->validate(array('title', 'descrption'))) {
+            // upload the image
+
+            // $this->imageFile->saveAs('images/uploads/cat/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->imageFile->saveAs('images/uploads/profiles/' .$img_name. '.' . $this->imageFile->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 
      /**

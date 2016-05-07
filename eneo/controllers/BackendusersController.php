@@ -10,6 +10,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\web\UploadedFile;
+
 
 /**
  * BackendusersController implements the CRUD actions for Backendusers model.
@@ -90,6 +92,18 @@ class BackendusersController extends Controller
         $LoginFormModel = new LoginForm();
 
         if ($model->load(Yii::$app->request->post())) {
+
+            // check of there is any image
+            $i=$model->imageFile = UploadedFile::getInstance($model, 'img_path');
+            if ($i) {
+                // upload
+                $img_name = mt_rand();
+                $model->upload($img_name);
+                // set the image path
+                // $model->img_path = $img_name;
+                $model->img_path = $img_name.'.'.$model->imageFile->extension;
+            }
+
             // create a hash
             $model->pass_hash = Yii::$app->getSecurity()->generatePasswordHash($model->password);
             $model->role='normal';
@@ -122,8 +136,31 @@ class BackendusersController extends Controller
         
         $model = $this->findModel($id);
 
+       
+
+        // if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
         if ($model->load(Yii::$app->request->post()) && $model->save(false)) {
-            return $this->redirect(['view', 'id' => $model->id]);
+
+            // check of there is any image
+            $i=$model->imageFile = UploadedFile::getInstance($model, 'img_path');
+            if ($i) {
+                // upload
+                $img_name = mt_rand();
+                $model->upload($img_name);
+                // set the image path
+                // $model->img_path = $img_name;
+                $model->img_path = $img_name.'.'.$model->imageFile->extension;
+            }
+
+            // then update the model
+            if ($model->save(false)) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }else{
+                return $this->render('update', [
+                    'model' => $model,
+                ]); 
+            }
+            
         } else {
             return $this->render('update', [
                 'model' => $model,

@@ -23,10 +23,10 @@ use app\models\EneoBizinfo;
 
         <!-- = $form->field($model, 'url')->fileInput()  -->
 
-        <!--  $form->field($model, 'vid_cat_id')->dropDownList(
+        <?= $form->field($model, 'vid_cat_id')->dropDownList(
             ArrayHelper::map(Videocat::find() ->where(['user_id' => Yii::$app->user->identity->id])->all(),'id','cat_name'),
-            ['prompt'=>'Select Category']
-        );  -->
+            ['prompt'=>'Default Category']
+        ); ?>
 
         <?= $form->field($model, 'biz_id')->dropDownList(
             ArrayHelper::map(EneoBizinfo::find()->where(['user_id'=>Yii::$app->user->identity->id])->all(),'id','name'),['prompt'=>'Select']

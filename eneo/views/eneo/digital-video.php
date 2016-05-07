@@ -43,7 +43,7 @@
 				<div class="col-ms-8">
 					<div class="business-detail-review-rating"></div>
 					<div class="business-detail-review-comment">
-						<a href="" class="btn btn-primary">Write a comment</a>
+						<!-- <a href="" class="btn btn-primary">Write a comment</a> -->
 					</div>
 				</div>
 			</div>
@@ -57,29 +57,19 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4">
-					<!-- <div class="business-detail-article">
+					<div class="business-detail-article">
 						<div class="side-item">
-							<div>Business Topics</div>
-							<ul class="side-item-list">
-								<li><a href="">Business Skills<span class="info-text">(5)</span></a></li>
-								<li><a href="">Productivity<span class="info-text">(9)</span></a></li>
-								<li><a href="">Operating Systems<span class="info-text">(4)</span></a></li>
-							</ul>
+							<?= $this->render('_video_sidebar_playlist', [
+						        'biz_vidz_cats'=>$biz_vidz_cats,
+						        'biz_id'=>$biz_id,
+						    ]) ?>
+							
 						</div>
-
-						<div class="side-item">
-							<div>Business Software</div>
-							<ul class="side-item-list">
-								<li><a href="">Microsoft<span class="info-text">(5)</span></a></li>
-								<li><a href="">Office<span class="info-text">(6)</span></a></li>
-								<li><a href="">Word<span class="info-text">(1)</span></a></li>
-							</ul>
-						</div>
-					</div> -->
+					</div>
 				</div>
 				<div class="col-md-8">
 					<div class="business-detail-article">
-						<div class="comtainer-fluid">
+						<div class="container-fluid">
 							<div class="row">
 								<h2 class="business-sidebar-article-title"><?= $biz_vidz['title'] ?></h2>
 								<div class="text-centerk">
@@ -100,6 +90,14 @@
 							</div>
 						</div>
 					</div>
+							<!-- render the commenting file-->
+							<?= $this->render('_commenting', [
+						        'biz'=>$biz,
+						        'commentModel'=>$commentModel,
+	                            'biz_comments'=>$biz_comments,
+	                            'comment_page'=>$comment_page,
+	                            'comment_page_value'=>$comment_page_value
+						    ]) ?>
 				</div>
 			</div>
 		</div>

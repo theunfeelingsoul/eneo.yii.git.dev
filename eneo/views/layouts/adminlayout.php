@@ -96,14 +96,15 @@ EneoAsset::register($this);
 							<span class="glyphicon glyphicon-facetime-video"></span>&nbsp;&nbsp;&nbsp;
 							<?= Html::a('Videos', ['advideos/index'], ['class' => '']) ?>
 						</li>
-					<!-- 	
-							Yii::$app->controller->id == 'videocat' ? 
-							'<li class="nav-sidebar-active">':
-							'<li class="">';
+						<?= 
+							Yii::$app->controller->id == 'videocat' || Yii::$app->controller->id == 'advideos' ? 
+							'<li class="nav-sidebar-active nav-sidebar-second-item">':
+							'<li class="hidden">';
 						 ?>
-							<span class="glyphicon glyphicon-th-large"></span>&nbsp;&nbsp;&nbsp;
-							 Html::a('Video Categories', ['videocat/index'], ['class' => '']) 
-						</li> -->
+
+							<span class="glyphicon glyphicon-record"></span>&nbsp;&nbsp;&nbsp;
+							 <?= Html::a('Video Categories', ['videocat/index'], ['class' => '']) ?>
+						</li>
 					</ul>
 				</div>
 			</div>
